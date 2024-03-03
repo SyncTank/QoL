@@ -20,7 +20,8 @@ return {
 			dapui.close()
 		end
 
-		vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {})
-		vim.keymap.set("n", "<leader>dc", dap.continue, {})
+		vim.keymap.set("n", "<leader>bp", dap.toggle_breakpoint, { desc = " [B]reak [P]oint" })
+		vim.keymap.set("n", "<leader>bc", dap.continue, { desc = " [B]reak [C]ontinue" })
+		vim.keymap.set("n", "<F7>", dap.step_into, { desc = " Step [F7]" })
 	end,
 }
