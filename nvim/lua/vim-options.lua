@@ -3,6 +3,12 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
+-- Enable folding with treesitter <z-c z-o> close open
+vim.cmd("set foldmethod=indent")
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+vim.cmd("set nofoldenable")
+
 -- <space> :help mapleader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
