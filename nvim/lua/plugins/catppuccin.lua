@@ -1,12 +1,46 @@
 return {
   {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
+  {
     "catppuccin/nvim",
-    lazy = false,
     name = "catppuccin",
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "catppuccin-mocha"
-    end
-  }
+    opts = {
+      term_colors = true,
+      transparent_background = false,
+      styles = {
+        comments = {},
+        conditionals = {},
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+      },
+      color_overrides = {
+        mocha = {
+          base = "#00001b",
+          mantle = "#00001b",
+          crust = "#00001b",
+        },
+      },
+      integrations = {
+        telescope = {
+          enabled = true,
+          style = "nvchad",
+        },
+        dropbar = {
+          enabled = true,
+          color_mode = true,
+        },
+      },
+    },
+  },
 }
-
