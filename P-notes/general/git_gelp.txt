@@ -1,0 +1,16 @@
+# Setup for github
+git config --global user.email "you@example.com"
+git config --global user.name "username"
+git config --global branch main
+
+github uses your public email you can just set it as the private one they provide in settings
+
+# After setup
+git status
+
+# adds all to git
+git add .
+
+#commiting to cloud
+git commit -m "message"
+git push

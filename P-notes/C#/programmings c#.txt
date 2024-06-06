@@ -1,0 +1,274 @@
+// Data types and sizes 
+hello world setup 
+if statements
+
+conditional :
+public -> access anywhere
+private -> access only within scope
+static -> applies to all instances 
+const -> unchanging 
+
+getters | constructor :
+Intiated values & functions for class
+
+setters | deconstructor :
+garbage collection for object
+
+constructor exp : 
+public classname(args){size_ = size; nMonsters_++;}
+classname  name = new classname
+ 
+// Enumartor - value typed list of ints
+enum Day
+{
+	Monday,
+	Tuesday
+	//...
+}
+
+enum Direction
+{
+	Left = 1,
+	Up,
+	Right,
+	Down
+}
+ 
+ // references are on heap and garbage-collected
+// classes : support inhereitance - reference typed
+
+public class program : app 
+{
+	void range();
+}
+ 
+ // on stack, deallocated when stack unwinds.
+ // stack collected is cheaper than refernce
+// structures : similar to class & array without inhereitance - value typed
+// structures like arrays store many pieces of data
+// strucutre store different data types arrays don't
+
+
+public struct Monster
+{
+	public string name_;
+	public int scare_;
+	public int size_;
+	
+	public Monster(string name, int scare, int size)
+	{
+		name_ = name;
+		scare_ = scare;
+		size_ = size;
+	}
+}
+
+int main()
+{
+	Monster Mike = new Monster("Mike", 10, 15);
+	Mike.name_; // == Mike 
+}
+ 
+// Structure of arrays
+
+public struct pointlist3D {
+    float x[N];
+    float y[N];
+    float z[N];
+};
+public struct pointlist3D points;
+float get_point_x(int i) { return points.x[i]; }
+
+// Array of structures
+
+public struct point3D {
+    float x;
+    float y;
+    float z;
+};
+public struct point3D points[N];
+float get_point_x(int i) { return points[i].x; }
+
+ 
+// Array : Increases the array's matrix
+
+int [] mynewarray = new int[20] // single
+
+int [,] my2darry = new int [,] 
+{
+	{1,2},
+	{3,4}
+}; // 2d array
+
+// Jagged Array : Holds arrays
+
+int [][] JagArray = new int [][]
+{
+	new char[] {1,4,2},
+	new char[] {6,8,4}
+}
+
+// Lists : Like arrays, but dynamic
+
+List<int> matrix = new List<int>();
+List<int> myList = new List<int>();
+
+var contact = new list<string>();
+
+myList.Add(1);
+myList.Add(2);
+myList.Add(3);
+
+myList.Remove(2);
+
+// adds both lists 
+myList.AddRange(matrix);
+
+// Directory stores collection of key value pairs
+// is not ordered or order preserved
+my_directory = {
+	'name' : 'John",
+	'age' : 30,
+	'list' : "names"
+}
+my_directory = {
+    'item1': 10,
+    'item2': 20,
+    'item3': 30
+}
+
+//# Accessing items in the directory
+print(my_directory['item1'])  # Output: 10
+print(my_directory['item2'])  # Output: 20
+print(my_directory['item3'])  # Output: 30
+
+//# Adding a new item to the directory
+my_directory['item4'] = 40
+
+//# Updating the value of an existing item
+my_directory['item2'] = 25
+
+//# Removing an item from the directory
+del my_directory['item3']
+
+
+// replace string (target, argu)
+string resultstring = teststring.replace("fredy", "hector");
+
+string resultstring = teststring.replace("e", "i");
+
+// addds to end string for a stringbuilder
+ms.append("test");
+
+// include library system for date function 
+DateTime myDate = DateTime.Now;
+DataTime myseconddate = new DateTime(2000, 12, 24);
+
+// Parse Date 
+DataTime = testDate = DateTime.Parse("2000/12/24");
+
+// file directory uses system.io
+// File class / rewrites files 
+string path = @"C:\temp\testText.txt";
+if(File.Exists(path))
+{
+	File.Delete(path);
+}else {
+	File.WriteAllLines(path, "Helo");
+}// File.AppendAllText
+
+// reading File.ReadAllLines
+Console.ReadKey();
+
+// Folders
+string newpath = @"C:\temp\direc";
+if(Directory.Exists(newpath))
+{
+	Directory.Delete(newPath);
+	Directory.Delete(newPath, true);
+}
+Directory.CreateDirectory(newPath);
+
+// Indexer
+
+priavte string[] studentName = new string[10];
+
+// this indicates defining index
+// int index access values using integer index position
+public string this[int index]
+{
+	get{studentName[index];}
+	set{studentName[index] = value;}
+}
+
+Program obj = new program();
+obj[0] = "Harry"; // log(obj[0]) == Harry
+obj[1] = "jeo"; // log(obj[0]) == jeo
+
+// Methods
+
+priavte void cat(x){console.log(x);}
+
+// Properties
+
+public string? FirstName { get; set; }
+
+public string FirstName { get; set; } = string.Empty;
+
+public string? FirstName
+    {
+        get => _firstName;
+        set => _firstName = value;
+    }
+    private string? _firstName;
+	
+public string? FirstName { get; private set; }
+
+public Person(string firstName) => FirstName = firstName;
+public string FirstName { get; }
+
+// init - defines an accessor method in prop or index immutable
+
+class Person_InitExample
+{
+     private int _yearOfBirth;
+
+     public int YearOfBirth
+     {
+        get => _yearOfBirth;
+        init => _yearOfBirth = value;
+     }
+}
+
+var john = new Person_InitExample
+{
+    YearOfBirth = 1984
+};
+
+john.YearOfBirth = 1926; // Not allowed
+
+// Generic
+
+class EmployeeInfo<T>
+{
+	priavte T[] employee = new T[50];
+
+	public T this[int index]
+	{
+		get{return employee[index];}
+		set{employee[index] = value;}
+	}
+
+}
+
+EmployeeInfo<int> Id = new EmployeeInfo<int>();
+
+Id[0] = 3;
+Id[1] = 13;
+
+EmployeeInfo<string> Name = new EmployeeInfo<string>();
+
+Name[0] = "jeo";
+Name[1] = "selena";
+
+

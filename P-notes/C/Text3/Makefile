@@ -1,0 +1,22 @@
+CC = clang # compiler
+CFLAGS = -Wall -Wextra -g # flags
+EXEC = kilo #.exe
+
+SRCS = $(wildcard *.c) # Sourcefiles
+
+OBJS = $(SRCS:.c=.o) # create objects
+
+ILKS = $(wildcard *.ilk)
+PDB = $(wildcard *.pdb)
+
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+				$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c
+				$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+			@echo "Cleaning"
+			rm -f $(OBJS) $(EXEC) $(ILKS) $(PDB)

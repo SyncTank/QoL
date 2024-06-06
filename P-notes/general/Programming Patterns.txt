@@ -1,0 +1,74 @@
+Writing Clean, orgainized code that is decoupled
+allows for less problems and block testing.
+
+However, you need more time to develop, maintain, and debug
+Levels of abstraction are also performance heavy
+
+You need to predict your usecase before developing
+It lessens the load/knowledge required to work with code blocks
+
+Psudeo -> prototyping -> clean code 
+Understand what your writing, test if the code works as intended, refactor if nessacery
+
+prototyping = quick code thats made to be thrown away
+
+The Balance :
+Nice Architecture so code is easier to understand over the lifespan of the project
+fast runtime performance
+latest features
+
+Good Architecture = improves productivity
+Mainting = less effort to keep clean
+
+Highly optimized code is inflexible and diffcult to change
+
+Codebases are made of trade-offs
+Doing code as fast as possible while still trying to optimize
+
+small bit of logic that covers large usecase
+
+abstraction and decoupling make code faster and easier, don't waste time unless code need the flexiblity
+Think about design performance throughout the developemnt cycle
+leave low level performance changes for before the end
+Move quickly, but don't forget the design space left behide
+If your gonna ditch code, don't waste time making better
+
+A fun game is a game, thats fun to make
+
+Imperative - explicit sets of commands that specify how to solve
+	Strucutured = Porgramming to interface with clear control flow
+	Procedural = using subroutines to carry out specific tasks on data 
+	Object-Oriented = using objects to combine behaviour and data
+Declarative - Expressing what the program should solve 
+	Functional = Expresses problems as a series of funcions and function call
+
+Structure of arrays can improve calling as results are cached and value refered
+Array of Structure more intuitive and support feature 
+
+Array of Sturcture of arrays / tiled array of structs -
+hybrid of both 
+
+Immutable vs mutable 
+
+x = something # immutable type
+print x
+func(x)
+print x # prints the same thing
+
+x = something # mutable type
+print x
+func(x)
+print x # might print something different
+
+x = something # immutable type
+y = x
+print x
+# some statement that operates on y
+print x # prints the same thing
+
+x = something # mutable type
+y = x
+print x
+# some statement that operates on y
+print x # might print something different
+
