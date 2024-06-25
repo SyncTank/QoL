@@ -6,9 +6,11 @@ I use scoop for the installation process, but anything works as long as it is de
 Also included my everyday setup in scoop.
 
 Required Items:
-lua
-lua-language-server
-ripgrep
+<ol>
+<li>lua</li>
+<li>lua-language-server</li>
+<li>ripgrep</li>
+</ol>
 
 Everyday setup (my list):
 neovim
