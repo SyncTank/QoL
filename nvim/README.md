@@ -24,7 +24,7 @@ Also included my everyday setup in scoop.
 <li>mysql</li>
 <li>make</li>
 <li>lua</li>
-<li>lua</li>-language-server
+<li>lua-language-server</li>
 <li>llvm</li>
 <li>go</li>
 <li>dark</li>
