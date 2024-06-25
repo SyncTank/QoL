@@ -5,27 +5,29 @@ Ethier install the lsps your self and remove the lanuages in the config, or inst
 I use scoop for the installation process, but anything works as long as it is detected in your terminal.
 Also included my everyday setup in scoop.
 
-Required Items:
+<h3>Required Items:</h3>
 <ol>
 <li>lua</li>
 <li>lua-language-server</li>
 <li>ripgrep</li>
 </ol>
 
-Everyday setup (my list):
-neovim
-zls
-zig
-ripgrep
-python
-nodejs
-mingw
-mysql
-make
-lua
-lua-language-server
-llvm
-go
-dark
-clangd
-7zip
+<h3>Everyday setup (my list):</h3>
+<ol>
+<li>neovim</li>
+<li>zls</li>
+<li>zig</li>
+<li>ripgrep</li>
+<li>python</li>
+<li>nodejs</li>
+<li>mingw</li>
+<li>mysql</li>
+<li>make</li>
+<li>lua</li>
+<li>lua</li>-language-server
+<li>llvm</li>
+<li>go</li>
+<li>dark</li>
+<li>clangd</li>
+<li>7zip</li>
+</ol>
