@@ -6,6 +6,7 @@ I use scoop for the installation process, but anything works as long as it is de
 Also included my everyday setup in scoop.
 
 <h3>Required Items:</h3>
+<code>scoop install lua lua-language-server ripgrep</code>
 <ol>
 <li>lua</li>
 <li>lua-language-server</li>
