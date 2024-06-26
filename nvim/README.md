@@ -32,3 +32,4 @@ Also included my everyday setup in scoop.
 <li>clangd</li>
 <li>7zip</li>
 </ol>
+<code>scoop install lua lua-language-server ripgrep neovim zls zig python nodejs mingw make llvm go clangd</code><br>
