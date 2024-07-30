@@ -13,6 +13,7 @@ vim.cmd("set nofoldenable")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 -- side indexs
 vim.opt.number = true
 vim.opt.relativenumber = true
