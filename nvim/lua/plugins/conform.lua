@@ -16,8 +16,8 @@ return {
 			-- is found.
 			javascript = { { "prettierd", "prettier", stop_after_first = true } },
 			
-			c = {"astyle"},
-			cpp = {"astyle"},
+			c = {"Uncrustify"},
+			cpp = {"Uncrustify"},
 			
 		  },
 		},
