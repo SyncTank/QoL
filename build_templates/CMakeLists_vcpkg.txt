@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.10)
+project(main)
+
+set(CMAKE_CXX_STANDARD 17)
+
+#Folder inlcude for projects for vcpkg
+set(CMAKE_PREFIX_PATH "C:/Users/ralvarado/scoop/apps/vcpkg/current/installed/x64-windows/share")
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/ralvarado/scoop/apps/vcpkg/current/scripts/buildsystems/vcpkg.cmake")
+
+# Include directories
+include_directories(include)
+
+# List all your source files here
+set(SOURCES
+    src/main.cpp
+)
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# Libary includes from vcpkg
+find_package(glfw3 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
+set_target_properties(${PROJECT_NAME}  PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/out
+)
+
+# Set the output directories for different types of files
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
