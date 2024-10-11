@@ -1,0 +1,3 @@
+C:/Users/ralvarado/OneDrive - Chauvet Lighting/Documents/Scripts/POC/c_net/CMakeFiles/main.dir
+C:/Users/ralvarado/OneDrive - Chauvet Lighting/Documents/Scripts/POC/c_net/CMakeFiles/edit_cache.dir
+C:/Users/ralvarado/OneDrive - Chauvet Lighting/Documents/Scripts/POC/c_net/CMakeFiles/rebuild_cache.dir
