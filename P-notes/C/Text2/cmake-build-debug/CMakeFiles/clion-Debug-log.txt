@@ -1,1 +1,0 @@
-CMakeLists.txt not found in E:\Development\Programming Notes\C\Text2 Select CMakeLists.txt

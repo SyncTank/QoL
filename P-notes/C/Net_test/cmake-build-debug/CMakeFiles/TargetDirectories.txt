@@ -1,3 +1,0 @@
-E:/Development/Programming Notes/C/Net_test/cmake-build-debug/CMakeFiles/Net_test.dir
-E:/Development/Programming Notes/C/Net_test/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Development/Programming Notes/C/Net_test/cmake-build-debug/CMakeFiles/rebuild_cache.dir

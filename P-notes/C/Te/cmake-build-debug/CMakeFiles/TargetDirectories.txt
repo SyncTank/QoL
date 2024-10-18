@@ -1,3 +1,0 @@
-E:/Development/Programming Notes/C/Te/cmake-build-debug/CMakeFiles/Te.dir
-E:/Development/Programming Notes/C/Te/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Development/Programming Notes/C/Te/cmake-build-debug/CMakeFiles/rebuild_cache.dir
