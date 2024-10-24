@@ -15,35 +15,27 @@ namespace Core {
 
 	}
 
-	void StoreProcesses()
+	void StoreProcess(std::vector<DWORD>& aProcess) // runs once on startup to initialize the list
 	{
-		// get list of process identifiers
-		DWORD aProcesses[1024], cbNeeded, cProcesses;
-		unsigned int i;
+		// Get list of process identifiers
+		DWORD cbNeeded, cProcesses;
 
-		if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
-		{
-			return;
+		if (!EnumProcesses(aProcess.data(), static_cast<DWORD>(aProcess.size() * sizeof(DWORD)), &cbNeeded)) {
+			std::cerr << "Failed to enumerate processes." << std::endl;
+			return; // Exit the function on failure
 		}
-
-		// Calculate how many pIdentifier were returned
+    
+		// Calculate how many process identifiers were returned
 		cProcesses = cbNeeded / sizeof(DWORD);
 
+		aProcess.resize(cProcesses); // resize vector
+    
 		// Print Name & process identifiers for each process
-		for (i = 0; i < cProcesses; i++)
-		{
-			if (aProcesses[i] != 0)
-			{
-				PrintProcessNameAndID(aProcesses[i]);
+		for (const auto& processID : aProcess) {
+			if (processID != 0) {
+				std::cout << "Process ID: " << processID << std::endl;
 			}
 		}
-	}
-
-	DWORD ReturnProcesses(DWORD* aProcesses, DWORD cbNeeded, DWORD cProcesses)
-	{
-		DWORD test;
-
-		return test;
 	}
 
 	void ListProcess() 
