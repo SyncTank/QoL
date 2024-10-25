@@ -8,7 +8,6 @@
 #include <psapi.h>
 #include <tchar.h>
 #include <vector>
-#include <new>
 
 namespace Core {
 
@@ -16,9 +15,11 @@ namespace Core {
 
 	void PrintDebug();
 
+	void KillProcess(DWORD);
+
 	void ListProcess(DWORD*, size_t size);
 
-	void PrintProcessNameAndID(DWORD processID);
+	void PrintProcess(DWORD processID);
 
 	void StoreProcess(std::vector<DWORD>&);
 
