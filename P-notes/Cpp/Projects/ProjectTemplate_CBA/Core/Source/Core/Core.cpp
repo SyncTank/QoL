@@ -38,7 +38,7 @@ namespace Core {
 		}
 	}
 
-	void ListProcess() 
+	void ListProcess(DWORD* Processes)
 	{
 		// get list of process identifiers
 		DWORD aProcesses[1024], cbNeeded, cProcesses;

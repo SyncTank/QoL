@@ -16,7 +16,7 @@ namespace Core {
 
 	void PrintDebug();
 
-	void ListProcess();
+	void ListProcess(DWORD*);
 
 	void PrintProcessNameAndID(DWORD processID);
 
