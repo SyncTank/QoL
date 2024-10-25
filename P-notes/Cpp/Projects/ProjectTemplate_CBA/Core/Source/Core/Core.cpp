@@ -32,19 +32,21 @@ namespace Core {
     
 		// Print Name & process identifiers for each process
 		for (const auto& processID : aProcess) {
-			if (processID != 0) {
-				std::cout << "Process ID: " << processID << std::endl;
+			if (processID != 0 && processID != 3435973836) {
+				//std::cout << "Process ID: " << processID << std::endl;
+				PrintProcessNameAndID(processID);
 			}
 		}
 	}
 
-	void ListProcess(DWORD* Processes)
+	void ListProcess(DWORD* aProcesses, size_t size)
 	{
 		// get list of process identifiers
-		DWORD aProcesses[1024], cbNeeded, cProcesses;
-		unsigned int i;
+		//DWORD aProcesses[1024];
+		DWORD cbNeeded, cProcesses;
+		//unsigned int i;
 
-		if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
+		if (!EnumProcesses(aProcesses, size, &cbNeeded))
 		{
 			return;
 		}
@@ -53,13 +55,13 @@ namespace Core {
 		cProcesses = cbNeeded / sizeof(DWORD);
 
 		// Print Name & process identifiers for each process
-		for (i = 0; i < cProcesses; i++)
-		{
-			if (aProcesses[i] != 0)
-			{
-				PrintProcessNameAndID(aProcesses[i]);
-			}
-		}
+		//for (i = 0; i < cProcesses; i++)
+		//{
+		//	if (aProcesses[i] != 0)
+		//	{
+		//		PrintProcessNameAndID(aProcesses[i]);
+		//	}
+		//}
 	}
 
 	void PrintProcessNameAndID(DWORD processID)
@@ -89,6 +91,14 @@ namespace Core {
 
 		// Release the handler to process
 		CloseHandle(hProcess);
+	}
+
+	void KillProcess()
+	{
+		HANDLE hProcess;
+
+
+		std::cout << "Murder Murder there has been a bloody Murder";
 	}
 
 }

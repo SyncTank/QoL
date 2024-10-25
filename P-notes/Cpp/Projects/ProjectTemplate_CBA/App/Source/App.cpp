@@ -2,22 +2,19 @@
 
 int main()
 {
-	//std::vector<DWORD> Processes(1024);
-	DWORD Processes[1024];
+	std::vector<DWORD> Processes(1024);
+	//const auto processSizeBuffer = 1024;
+	//DWORD Processes[processSizeBuffer];
 
 	//Core::PrintDebug();
 
-	Core::ListProcess(Processes);
+	//Core::ListProcess(Processes, processSizeBuffer);
 
-	//Core::StoreProcess(Processes);
+	Core::StoreProcess(Processes);
 
 	//Core::PrintHelloWorld();
 
-	for (const auto Process : Processes)
-	{
-		if (Process != 0) {
-			std::cout << "Process ID: " << Process << std::endl;
-		}
-	}
+
+
 
 }
