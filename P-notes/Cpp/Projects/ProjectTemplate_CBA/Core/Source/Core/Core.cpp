@@ -103,11 +103,11 @@ namespace Core {
 
 	void ProcessList(std::vector<Core::Process>& ProcessWhitelist, std::vector<DWORD>& aProcess)
 	{
+		int NewSizeLimit = 0;
 		for (const auto& processID : aProcess)
 		{
 			TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
 			MODULEINFO szInfoBuffer{};
-			TCHAR FileNamebuffer[MAX_PATH];
 
 			// get handle of process
 			HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
@@ -116,7 +116,7 @@ namespace Core {
 
 			if (hProcess == NULL)
 			{
-				return;
+				continue;
 			}
 
 			HMODULE hMod;
@@ -129,19 +129,42 @@ namespace Core {
 					sizeof(szProcessName) / sizeof(TCHAR));
 			}
 
-			for (const auto& processName : ProcessWhitelist )
+			//_tprintf(TEXT("%s (PIDL %u)\n"), szProcessName, processID);
+
+			for (size_t i = 0; i < ProcessWhitelist.size(); i++)
 			{
-				
+				if (ProcessWhitelist[i].name == std::wstring(szProcessName))
+				{
+					for (const auto id : ProcessWhitelist[i].PIDs)
+					{
+						if (id == processID)
+						{
+							goto end;
+						}
+					}
+
+					ProcessWhitelist[i].PIDs.emplace_back(processID);
+					break;
+				}
+				else if (ProcessWhitelist[i].name.empty())
+				{
+					ProcessWhitelist[i].name = std::wstring(szProcessName);
+					ProcessWhitelist[i].PIDs.emplace_back(processID);
+					NewSizeLimit++;
+					break;
+				}
+				end:;
 			}
 
 			// Release the handler to process
 			CloseHandle(hProcess);
 		}
+		ProcessWhitelist.resize(NewSizeLimit);
 	}
 
 	void KillProcess(DWORD pid)
 	{
-		std::cout << "Something in is the dark, " << pid;
+		std::cout << "Something in is the dark, " << pid << "\n";
 
 		HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, pid);
 
@@ -154,12 +177,12 @@ namespace Core {
 		if (!TerminateProcess(hProcess, 0))
 		{
 			std::cout << "Failed to terminate process: " << GetLastError() << std::endl;
+			std::cout << "HE LIVES!!\n";
 		}
 		else {
-			std::cout << "Process terminated successfully." << std::endl;
+			std::cout << "Process terminated." << std::endl;
+			std::cout << "Murder Murder there has been a bloody Murder\n";
 		}
-
-		std::cout << "Murder Murder there has been a bloody Murder";
 
 		// Release the handler to process
 		CloseHandle(hProcess);

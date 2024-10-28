@@ -12,10 +12,11 @@
 
 namespace Core {
 
+	// replace with unordered map
 	struct Process
 	{
 		std::vector<TCHAR> PIDs;
-		std::string name = "";
+		std::wstring name;
 	};
 
 	void PrintHelloWorld();

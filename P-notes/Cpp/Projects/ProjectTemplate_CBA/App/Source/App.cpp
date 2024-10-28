@@ -13,29 +13,47 @@ int main()
 
 	Core::ProcessList(ProcessWhitelist, Processes);
 
+	for (const auto ListedProcess : ProcessWhitelist)
+	{
+		Core::PrintProcessAll(ListedProcess.PIDs[0]);
+	}
+
 	//Core::PrintHelloWorld();
 	std::cin.get();
 
 
- 	//DWORD Test = 18324;
-	//for (;;)
-	//{
-	//	Core::IterProcess_CPP(Processes);
-	//	for (const auto id : Processes)
-	//	{
-	//		std::cout << "Checking : " << id << std::endl;
-	//		if (id == Test)
-	//		{
-	//			Core::KillProcess(Test);
-	//			return;
-	//		}
-	//	}
-	//	
-	//}
-	
+ 	std::wstring Test = L"GitHubDesktop.exe";
+	for (;;)
+	{
+		int i = 0;
+		for (const auto ProcessID : ProcessWhitelist)
+		{
+			if (ProcessID.name == Test)
+			{
+				ProcessWhitelist.erase(ProcessWhitelist.begin()+i);
+				if (ProcessID.PIDs.size() > 1)
+				{
+					for (const auto pi : ProcessID.PIDs)
+					{
+						Core::KillProcess(pi);
+					}
+				}
+				else
+				{
+					Core::KillProcess(ProcessID.PIDs[0]);
+				}
+			}
+			i++;
+		}
+		Core::IterProcess_CPP(Processes);
+		ProcessWhitelist.resize(Processes.size());
+
+		Core::ProcessList(ProcessWhitelist, Processes);
+	}
+	end:;
 	
 	std::cout << "AGAIN!\n\n\n\n";
 	
-	Core::IterProcess_CPP(Processes);
+	//Core::IterProcess_CPP(Processes);
 
 }
