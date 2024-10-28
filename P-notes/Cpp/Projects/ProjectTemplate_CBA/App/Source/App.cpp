@@ -6,13 +6,12 @@ int main()
 	//const auto processSizeBuffer = 1024;
 	//DWORD Processes[processSizeBuffer];
 
-	//Core::PrintDebug();
-
 	//Core::ListProcess(Processes, processSizeBuffer);
 
 	Core::StoreProcess(Processes);
 
 	//Core::PrintHelloWorld();
+	//std::cin.get();
 
  	DWORD Test = 18324;
 	for (;;)
@@ -28,10 +27,10 @@ int main()
 		}
 		
 	}
-
-
+	
+	
 	std::cout << "AGAIN!\n\n\n\n";
-
+	
 	Core::StoreProcess(Processes);
 
 }

@@ -8,13 +8,6 @@ namespace Core {
 		std::cin.get();
 	}
 
-	void PrintDebug() 
-	{
-	
-		std::cout << "\nStep\n";
-
-	}
-
 	void StoreProcess(std::vector<DWORD>& aProcess) // runs once on startup to initialize the list
 	{
 		// Get list of process identifiers
@@ -55,13 +48,14 @@ namespace Core {
 		cProcesses = cbNeeded / sizeof(DWORD);
 
 		// Print Name & process identifiers for each process
-		//for (i = 0; i < cProcesses; i++)
-		//{
-		//	if (aProcesses[i] != 0)
-		//	{
-		//		PrintProcessNameAndID(aProcesses[i]);
-		//	}
-		//}
+		for (auto i = 0; i < cProcesses; i++)
+		{
+			if (aProcesses[i] != 0)
+			{
+				PrintProcess(aProcesses[i]);
+			}
+		}
+
 	}
 
 	void PrintProcess(DWORD processID)
@@ -95,8 +89,8 @@ namespace Core {
 
 			// Print the process name & identifier
 			_tprintf(TEXT("%s (PIDL %u)\n"), szProcessName, processID);
-			//std::cout << szInfoBuffer.EntryPoint << "\t" << szInfoBuffer.lpBaseOfDll << "\t" << szInfoBuffer.SizeOfImage << std::endl;
-			//std::wcout << "FileName : " << FileNamebuffer;
+			std::cout << szInfoBuffer.EntryPoint << "\t" << szInfoBuffer.lpBaseOfDll << "\t" << szInfoBuffer.SizeOfImage << std::endl;
+			std::wcout << "FileName : " << FileNamebuffer;
 		}
 
 		// Release the handler to process
