@@ -8,19 +8,26 @@
 #include <psapi.h>
 #include <tchar.h>
 #include <vector>
+#include <stdexcept>
 
 namespace Core {
 
-	void PrintHelloWorld();
+	struct Process
+	{
+		std::vector<TCHAR> PIDs;
+		std::string name = "";
+	};
 
-	void PrintDebug();
+	void PrintHelloWorld();
 
 	void KillProcess(DWORD);
 
-	void ListProcess(DWORD*, size_t size);
+	void IterProcess_C(DWORD*, DWORD size);
 
-	void PrintProcess(DWORD processID);
+	void PrintProcessAll(DWORD processID);
 
-	void StoreProcess(std::vector<DWORD>&);
+	void ProcessList(std::vector<Core::Process>& ProcessWhitelist, std::vector<DWORD>& aProcess);
+
+	void IterProcess_CPP(std::vector<DWORD>&);
 
 }

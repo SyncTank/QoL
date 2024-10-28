@@ -6,31 +6,36 @@ int main()
 	//const auto processSizeBuffer = 1024;
 	//DWORD Processes[processSizeBuffer];
 
-	//Core::ListProcess(Processes, processSizeBuffer);
+	//Core::IterProcess_C(Processes, processSizeBuffer);
 
-	Core::StoreProcess(Processes);
+	Core::IterProcess_CPP(Processes);
+	std::vector<Core::Process> ProcessWhitelist(Processes.size());
+
+	Core::ProcessList(ProcessWhitelist, Processes);
 
 	//Core::PrintHelloWorld();
-	//std::cin.get();
+	std::cin.get();
 
- 	DWORD Test = 18324;
-	for (;;)
-	{
-		Core::StoreProcess(Processes);
-		for (const auto id : Processes)
-		{
-			std::cout << "Checking : " << id << std::endl;
-			if (id == Test)
-			{
-				Core::KillProcess(Test);
-			}
-		}
-		
-	}
+
+ 	//DWORD Test = 18324;
+	//for (;;)
+	//{
+	//	Core::IterProcess_CPP(Processes);
+	//	for (const auto id : Processes)
+	//	{
+	//		std::cout << "Checking : " << id << std::endl;
+	//		if (id == Test)
+	//		{
+	//			Core::KillProcess(Test);
+	//			return;
+	//		}
+	//	}
+	//	
+	//}
 	
 	
 	std::cout << "AGAIN!\n\n\n\n";
 	
-	Core::StoreProcess(Processes);
+	Core::IterProcess_CPP(Processes);
 
 }

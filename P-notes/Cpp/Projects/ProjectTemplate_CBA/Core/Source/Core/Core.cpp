@@ -2,13 +2,13 @@
 
 namespace Core {
 
-	void PrintHelloWorld()
+	void PrintHelloWorld() // Debug test
 	{
 		std::cout << "Hello World!\n";
 		std::cin.get();
 	}
 
-	void StoreProcess(std::vector<DWORD>& aProcess) // runs once on startup to initialize the list
+	void IterProcess_CPP(std::vector<DWORD>& aProcess) // CPP implementation of function runs to initialize the list
 	{
 		// Get list of process identifiers
 		DWORD cbNeeded, cProcesses;
@@ -27,12 +27,12 @@ namespace Core {
 		//for (const auto& processID : aProcess) {
 		//	if (processID != 0 && processID != 3435973836) {
 		//		//std::cout << "Process ID: " << processID << std::endl;
-		//		PrintProcess(processID);
+		//		PrintProcessAll(processID);
 		//	}
 		//}
 	}
 
-	void ListProcess(DWORD* aProcesses, size_t size)
+	void IterProcess_C(DWORD* aProcesses, DWORD size) // C implementation of function runs to initialize the list
 	{
 		// get list of process identifiers
 		//DWORD aProcesses[1024];
@@ -47,18 +47,18 @@ namespace Core {
 		// Calculate how many pIdentifier were returned
 		cProcesses = cbNeeded / sizeof(DWORD);
 
-		// Print Name & process identifiers for each process
-		for (auto i = 0; i < cProcesses; i++)
-		{
-			if (aProcesses[i] != 0)
-			{
-				PrintProcess(aProcesses[i]);
-			}
-		}
+		//// Print Name & process identifiers for each process
+		//for (auto i = 0; i < cProcesses; i++)
+		//{
+		//	if (aProcesses[i] != 0)
+		//	{
+		//		PrintProcessAll(aProcesses[i]);
+		//	}
+		//}
 
 	}
 
-	void PrintProcess(DWORD processID)
+	void PrintProcessAll(DWORD processID) // prints a more detailed list and file path
 	{
 		TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
 		MODULEINFO szInfoBuffer{};
@@ -68,33 +68,75 @@ namespace Core {
 		HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION |
 										PROCESS_VM_READ,
 										FALSE, processID);
-		// Get process name
-		if (NULL != hProcess)
+		if (hProcess == NULL)
 		{
-			HMODULE hMod;
-			DWORD cbNeeded;
-
-			if ( EnumProcessModulesEx(hProcess, &hMod, sizeof(hMod),
-				&cbNeeded, LIST_MODULES_ALL) )
-			{
-				GetModuleBaseName(hProcess, hMod, szProcessName,
-					sizeof(szProcessName) / sizeof(TCHAR));
-
-				GetModuleInformation(hProcess, hMod, &szInfoBuffer,
-					sizeof(szInfoBuffer));
-
-				GetModuleFileNameEx(hProcess, NULL, FileNamebuffer, MAX_PATH);
-
-			}
-
-			// Print the process name & identifier
-			_tprintf(TEXT("%s (PIDL %u)\n"), szProcessName, processID);
-			std::cout << szInfoBuffer.EntryPoint << "\t" << szInfoBuffer.lpBaseOfDll << "\t" << szInfoBuffer.SizeOfImage << std::endl;
-			std::wcout << "FileName : " << FileNamebuffer;
+			std::cout << "Failed to open process, " << GetLastError() << " " << processID << " \n";
+			return;
 		}
+		
+		// Get process name
+		HMODULE hMod;
+		DWORD cbNeeded;
+
+		if ( EnumProcessModulesEx(hProcess, &hMod, sizeof(hMod),
+			&cbNeeded, LIST_MODULES_ALL) )
+		{
+			GetModuleBaseName(hProcess, hMod, szProcessName,
+				sizeof(szProcessName) / sizeof(TCHAR));
+
+			GetModuleInformation(hProcess, hMod, &szInfoBuffer,
+				sizeof(szInfoBuffer));
+
+			GetModuleFileNameEx(hProcess, NULL, FileNamebuffer, MAX_PATH);
+
+		}
+
+		// Print the process name & identifier
+		_tprintf(TEXT("%s (PIDL %u)\n"), szProcessName, processID);
+		//std::cout << szInfoBuffer.EntryPoint << "\t" << szInfoBuffer.lpBaseOfDll << "\t" << szInfoBuffer.SizeOfImage << std::endl;
+		//std::wcout << "FileName : " << FileNamebuffer;
+		
 
 		// Release the handler to process
 		CloseHandle(hProcess);
+	}
+
+	void ProcessList(std::vector<Core::Process>& ProcessWhitelist, std::vector<DWORD>& aProcess)
+	{
+		for (const auto& processID : aProcess)
+		{
+			TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
+			MODULEINFO szInfoBuffer{};
+			TCHAR FileNamebuffer[MAX_PATH];
+
+			// get handle of process
+			HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
+				PROCESS_VM_READ,
+				FALSE, processID);
+
+			if (hProcess == NULL)
+			{
+				return;
+			}
+
+			HMODULE hMod;
+			DWORD cbNeeded;
+
+			if (EnumProcessModulesEx(hProcess, &hMod, sizeof(hMod),
+				&cbNeeded, LIST_MODULES_ALL))
+			{
+				GetModuleBaseName(hProcess, hMod, szProcessName,
+					sizeof(szProcessName) / sizeof(TCHAR));
+			}
+
+			for (const auto& processName : ProcessWhitelist )
+			{
+				
+			}
+
+			// Release the handler to process
+			CloseHandle(hProcess);
+		}
 	}
 
 	void KillProcess(DWORD pid)
@@ -119,6 +161,7 @@ namespace Core {
 
 		std::cout << "Murder Murder there has been a bloody Murder";
 
+		// Release the handler to process
 		CloseHandle(hProcess);
 	}
 
