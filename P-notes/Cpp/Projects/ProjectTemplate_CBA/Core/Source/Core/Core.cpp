@@ -101,65 +101,45 @@ namespace Core {
 		CloseHandle(hProcess);
 	}
 
-	void ProcessList(std::vector<Core::Process>& ProcessWhitelist, std::vector<DWORD>& aProcess)
+	void ProcessList(std::unordered_map<std::wstring, std::vector<DWORD>>& TotalProcessList)
 	{
-		int NewSizeLimit = 0;
-		for (const auto& processID : aProcess)
+		std::vector<DWORD> Processes(1024);
+		//const auto processSizeBuffer = 1024;
+		//DWORD Processes[processSizeBuffer];
+
+		Core::IterProcess_CPP(Processes);
+		Processes.reserve(1024);
+		//Core::IterProcess_C(Processes, processSizeBuffer);
+
+		for (const auto processID : Processes)
 		{
 			TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
 			MODULEINFO szInfoBuffer{};
-
+			
 			// get handle of process
 			HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
 				PROCESS_VM_READ,
 				FALSE, processID);
-
-			if (hProcess == NULL)
+			
+			if (!hProcess)
 			{
 				continue;
 			}
-
+			
 			HMODULE hMod;
 			DWORD cbNeeded;
-
+			
 			if (EnumProcessModulesEx(hProcess, &hMod, sizeof(hMod),
 				&cbNeeded, LIST_MODULES_ALL))
 			{
 				GetModuleBaseName(hProcess, hMod, szProcessName,
 					sizeof(szProcessName) / sizeof(TCHAR));
 			}
-
+			
 			//_tprintf(TEXT("%s (PIDL %u)\n"), szProcessName, processID);
-
-			for (size_t i = 0; i < ProcessWhitelist.size(); i++)
-			{
-				if (ProcessWhitelist[i].name == std::wstring(szProcessName))
-				{
-					for (const auto id : ProcessWhitelist[i].PIDs)
-					{
-						if (id == processID)
-						{
-							goto end;
-						}
-					}
-
-					ProcessWhitelist[i].PIDs.emplace_back(processID);
-					break;
-				}
-				else if (ProcessWhitelist[i].name.empty())
-				{
-					ProcessWhitelist[i].name = std::wstring(szProcessName);
-					ProcessWhitelist[i].PIDs.emplace_back(processID);
-					NewSizeLimit++;
-					break;
-				}
-				end:;
-			}
-
-			// Release the handler to process
-			CloseHandle(hProcess);
+		
+			TotalProcessList[szProcessName].emplace_back(processID);
 		}
-		ProcessWhitelist.resize(NewSizeLimit);
 	}
 
 	void KillProcess(DWORD pid)
