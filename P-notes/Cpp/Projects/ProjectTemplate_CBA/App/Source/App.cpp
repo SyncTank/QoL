@@ -2,44 +2,34 @@
 
 int main()
 {
-	std::unordered_map<std::wstring, std::vector<DWORD>> TotalProcessList;
+	std::unordered_map<std::wstring, std::vector<DWORD>> totalProcessList;
+	std::vector<std::wstring> blackList;
 
-	Core::ProcessList(TotalProcessList);
+	Core::ProcessList(totalProcessList);
+
+	// TODO  : Blacklist 
+	// Processlist doesn't update when timer is going
+	// Timer
 
 	//Core::PrintHelloWorld();
 	std::cin.get();
 
-
- 	//std::wstring Test = L"GitHubDesktop.exe";
-	//for (;;)
-	//{
-	//	int i = 0;
-	//	for (const auto ProcessID : ProcessWhitelist)
-	//	{
-	//		if (ProcessID.name == Test)
-	//		{
-	//			ProcessWhitelist.erase(ProcessWhitelist.begin()+i);
-	//			if (ProcessID.PIDs.size() > 1)
-	//			{
-	//				for (const auto pi : ProcessID.PIDs)
-	//				{
-	//					Core::KillProcess(pi);
-	//				}
-	//			}
-	//			else
-	//			{
-	//				Core::KillProcess(ProcessID.PIDs[0]);
-	//			}
-	//		}
-	//		i++;
-	//	}
-	//	Core::IterProcess_CPP(Processes);
-	//	ProcessWhitelist.resize(Processes.size());
-	//
-	//	Core::ProcessList(ProcessWhitelist, Processes);
-	//}
-	//end:;
-	
+	std::wstring test = L"GitHubDesktop.exe";
+	for (;;)
+	{
+		Core::ProcessList(totalProcessList);
+		if (totalProcessList.find(test) != totalProcessList.end())
+		{
+			Core::KillProcess(totalProcessList[test]);
+			totalProcessList.erase(test);
+		}
+		else 
+		{
+			std::cout << "Safe\n";
+		}
+		Sleep(20);
+	}
+		
 	std::cout << "AGAIN!\n\n\n\n";
 	
 	//Core::IterProcess_CPP(Processes);

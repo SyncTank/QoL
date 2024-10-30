@@ -101,17 +101,17 @@ namespace Core {
 		CloseHandle(hProcess);
 	}
 
-	void ProcessList(std::unordered_map<std::wstring, std::vector<DWORD>>& TotalProcessList)
+	void ProcessList(std::unordered_map<std::wstring, std::vector<DWORD>>& totalProcessList)
 	{
-		std::vector<DWORD> Processes(1024);
+		std::vector<DWORD> processes(1024);
+		
 		//const auto processSizeBuffer = 1024;
-		//DWORD Processes[processSizeBuffer];
+		//DWORD processes[processSizeBuffer];
 
-		Core::IterProcess_CPP(Processes);
-		Processes.reserve(1024);
-		//Core::IterProcess_C(Processes, processSizeBuffer);
+		Core::IterProcess_CPP(processes);
+		//Core::IterProcess_C(processes, processSizeBuffer);
 
-		for (const auto processID : Processes)
+		for (const auto processID : processes)
 		{
 			TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
 			MODULEINFO szInfoBuffer{};
@@ -137,35 +137,38 @@ namespace Core {
 			}
 			
 			//_tprintf(TEXT("%s (PIDL %u)\n"), szProcessName, processID);
-		
-			TotalProcessList[szProcessName].emplace_back(processID);
+
+			totalProcessList[szProcessName].emplace_back(processID);
 		}
 	}
 
-	void KillProcess(DWORD pid)
+	void KillProcess(std::vector<DWORD> ids)
 	{
-		std::cout << "Something in is the dark, " << pid << "\n";
-
-		HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, pid);
-
-		if (hProcess == NULL) 
+		for (const auto pid : ids)
 		{
-			std::cout << "Failed to open process," << GetLastError();
-			return;
-		}
+			std::cout << "Something is in the shadows, " << pid << "\n";
 
-		if (!TerminateProcess(hProcess, 0))
-		{
-			std::cout << "Failed to terminate process: " << GetLastError() << std::endl;
-			std::cout << "HE LIVES!!\n";
-		}
-		else {
-			std::cout << "Process terminated." << std::endl;
-			std::cout << "Murder Murder there has been a bloody Murder\n";
-		}
+			HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, pid);
 
-		// Release the handler to process
-		CloseHandle(hProcess);
+			if (hProcess == NULL)
+			{
+				std::cout << "Failed to open process," << GetLastError();
+				return;
+			}
+
+			if (!TerminateProcess(hProcess, 0))
+			{
+				std::cout << "Failed to terminate process: " << GetLastError() << std::endl;
+				std::cout << "HE LIVES!!\n";
+			}
+			else {
+				std::cout << "Process terminated." << std::endl;
+				std::cout << "Murder Murder there has been a bloody Murder\n";
+			}
+
+			// Release the handler to process
+			CloseHandle(hProcess);
+		}
 	}
 
 }

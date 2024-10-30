@@ -14,15 +14,14 @@ namespace Core {
 
 	void PrintHelloWorld();
 
-	void KillProcess(DWORD);
+	void IterProcess_CPP(std::vector<DWORD>&);
 
 	void IterProcess_C(DWORD*, DWORD);
 
 	void PrintProcessAll(DWORD);
 	
 	void ProcessList(std::unordered_map<std::wstring, std::vector<DWORD>>&);
-	//void ProcessList(std::vector<Core::Process>& ProcessWhitelist, std::vector<DWORD>& aProcess);
 
-	void IterProcess_CPP(std::vector<DWORD>&);
+	void KillProcess(std::vector<DWORD>);
 
 }
