@@ -2,13 +2,27 @@
 
 #ifndef _WINDOWS_
 #include <Windows.h>
+#include <psapi.h>
+#include <tlhelp32.h>
 #endif
 
 #include <iostream>
-#include <psapi.h>
+#include <fstream>
+#include <stdio.h>
+#include <locale>
+#include <codecvt>
+
 #include <tchar.h>
 #include <vector>
 #include <unordered_map>
+
+#include <nfd.h>
+
+#include <algorithm>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
+#include <sstream>
 
 namespace Core {
 
@@ -23,5 +37,7 @@ namespace Core {
 	void ProcessList(std::unordered_map<std::wstring, std::vector<DWORD>>&);
 
 	void KillProcess(std::vector<DWORD>);
+
+	std::vector<DWORD> GetProcessIDs(const std::wstring& processName);
 
 }
