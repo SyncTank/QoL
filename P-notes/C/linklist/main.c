@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-typedef enum types { INT, CHAR, FLOAT, DOUB, STR } Type;
+typedef enum types { NONE, INT, CHAR, FLOAT, DOUB, STR } Type;
 
 typedef union Container {
   int num;
@@ -58,7 +58,39 @@ void setNodeValue(Node *node, void *value, Type ty) {
   }
 }
 
+int is_NodeAlive(Node *node) {
+  printf("ISALIVE | Node address: %p, num: %i, dataType: %i\n", node,
+         node->value.data.num, node->value.dataType);
+
+  if (node == NULL) {
+    printf("NULL PTR\n");
+    return 0;
+  }
+
+  switch (node->value.dataType) {
+  case (INT):
+    return 1;
+  case (CHAR):
+    return 1;
+  case (FLOAT):
+    return 1;
+  case (DOUB):
+    return 1;
+  case (STR):
+    return 1;
+  default:
+    printf("Invaild Node not Alive! Returning 0\n");
+    return 0;
+  }
+}
+
 void printNode(Node *node) {
+  if (node == NULL) {
+    return;
+  }
+  if (!is_NodeAlive(node)) {
+    return;
+  }
   switch (node->value.dataType) {
   case (INT):
     printf("%i", node->value.data.num);
@@ -77,6 +109,7 @@ void printNode(Node *node) {
     return;
   default:
     printf("Invaild type!\n");
+    return;
   }
 }
 
@@ -86,52 +119,109 @@ typedef struct LinkedList_t {
   Node *tail;
 } LinkedList;
 
+void init_LinkedList(LinkedList *list) { list->max_size = 0; }
+
 void printLinkedList_From_Head(LinkedList *list) {
-  if (list->head == NULL) {
+  if (list == NULL) {
+    return;
+  }
+  if (is_NodeAlive(list->head) == 0) {
     printf("ERROR No Head found\n\n");
     return;
   }
-  Node *nextInLine = list->head;
-  while (nextInLine != NULL) {
-    printNode(nextInLine);
-    nextInLine = nextInLine->next;
+  if (is_NodeAlive(list->tail) == 0) {
+    printf("ERROR No tail found\n\n");
+    return;
   }
+  if (list->max_size < 1) {
+    printf("ERROR size is 0 \n\n");
+    return;
+  }
+
+  Node *nextInLine = list->head;
+  printf("\nCurrent Head : ");
+  printf("\n");
+
+  if (list->max_size == 1) {
+    is_NodeAlive(nextInLine);
+    return;
+  }
+
+  int count = 0;
+  printf("SIZE : %i CURRENT HEAD : %i\n", list->max_size,
+         list->head->value.data.num);
+  while (count < list->max_size && nextInLine != NULL) {
+    printf("%i ", nextInLine->value.data.num);
+    nextInLine = nextInLine->next;
+    count += 1;
+  }
+  printf("\n");
 };
 
 void add_To_Tail(LinkedList *list, Node *node) {
-  // if (node->value.data == NULL) {
-  //  return;
-  // }
-  if (list->tail == NULL) {
-    list->tail = node;
+  printf("\n\nADDTAILING | Node address: %p, num: %i, dataType: %i\n", node,
+         node->value.data.num, node->value.dataType);
+  if (node == NULL || list == NULL) {
+    printf("NULL PTR\n");
+    return;
   }
-  if (list->head == NULL) {
+
+  if (is_NodeAlive(node) == NONE) {
+    return;
+  }
+  if (is_NodeAlive(list->head) == NONE) {
     list->head = node;
   }
+  if (is_NodeAlive(list->tail) == NONE) {
+    list->tail = node;
+  }
+  setNextNode(list->tail, node);
+  setPastNode(node, list->tail);
+  list->tail = node;
   list->max_size++;
 };
 
 void add_To_Head(LinkedList *list, Node *node) {
-  if (list->head == NULL) {
+  printf("\n\nADDHEADING | Node address: %p, num: %i, dataType: %i\n", node,
+         node->value.data.num, node->value.dataType);
+  if (node == NULL || list == NULL) {
+    printf("NULL PTR\n");
+    return;
+  }
+  if (is_NodeAlive(node) == NONE) {
+    return;
+  }
+  if (is_NodeAlive(list->head) == NONE) {
     list->head = node;
   }
-  if (list->tail == NULL) {
+  if (is_NodeAlive(list->tail) == NONE) {
     list->tail = node;
   }
+  setPastNode(list->head, node);
+  setNextNode(node, list->head);
+  list->head = node;
   list->max_size++;
 };
 
 void remove_Tail(LinkedList *list) {
-  if (list->tail == NULL) {
+  if (is_NodeAlive(list->tail) == NONE) {
     return;
   }
+  if (list->max_size == 0) {
+    return;
+  }
+  list->tail = list->tail->past;
   list->max_size--;
 };
 
 void remove_Head(LinkedList *list) {
-  if (list->head == NULL) {
+  if (is_NodeAlive(list->head) == NONE) {
     return;
   }
+  if (list->max_size == 0) {
+    return;
+  }
+  list->head = list->head->next;
   list->max_size--;
 };
 
@@ -139,7 +229,7 @@ void remove_Head(LinkedList *list) {
 
 int main() {
 
-  printf("Initializing Nodes for Work....\n");
+  printf("Initializing Nodes for Work....\n\n");
 
   int values[MAX];
   Node nodes[MAX];
@@ -157,7 +247,9 @@ int main() {
   printf("Starting Linked List\n");
 
   LinkedList nlist;
+  init_LinkedList(&nlist);
 
+  printf("Size of LinkedList %i\n", nlist.max_size);
   printLinkedList_From_Head(&nlist);
 
   printf("sizeof node : %zu , sizeof value: %zu , sizeof data: %zu\n",
@@ -172,7 +264,28 @@ int main() {
   printf("sizeof node : %zu , sizeof value: %zu , sizeof data: %zu\n",
          sizeof(test), sizeof(test.value), sizeof(test.value.data));
 
-  printf("Size of an int %zu\n", sizeof(double));
+  printf("Size of an float %zu\n\n", sizeof(double));
+
+  Node k;
+  printNode(&k);
+
+  printf("\nAttmpting a print LinkedList!\n");
+  printLinkedList_From_Head(&nlist);
+
+  add_To_Head(&nlist, &nodes[5]); // HEAD
+  add_To_Head(&nlist, &nodes[4]);
+  add_To_Head(&nlist, &nodes[2]);
+  add_To_Head(&nlist, &nodes[3]);
+  add_To_Tail(&nlist, &nodes[8]); // TAIL
+  add_To_Tail(&nlist, &nodes[1]);
+  add_To_Head(&nlist, &nodes[6]); // HEAD
+
+  printf("\n\nPRINTING\n\n");
+
+  printLinkedList_From_Head(&nlist);
+
+  remove_Head(&nlist); // REMOVE HEAD
+  printLinkedList_From_Head(&nlist);
 
   return 0;
 }

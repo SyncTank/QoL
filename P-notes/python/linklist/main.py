@@ -17,19 +17,20 @@ class Node:
     def __repr__(self):
         return str(self.value)
 
+
 class LinkList:
     def __init__(self):
         self.max_size: int = 0
         self.tail = None
         self.head = None
-        self.collection: list = [] # Only for debugging
+        self.collection: list = []  # Only for debugging
 
     def show_nodes(self):
         print(self.collection)
         return
 
-    def add_to_tail(self, node: Node ):
-        if node.value == None:
+    def add_to_tail(self, node: Node):
+        if node.value is None:
             raise ValueError("None tried to add nothing to list")
         self.max_size += 1
         self.collection.append(node)
@@ -43,7 +44,7 @@ class LinkList:
             self.head = node
 
     def add_to_head(self, node):
-        if node.value == None:
+        if node.value is None:
             raise ValueError("None tried to add nothing to list")
         self.max_size += 1
         self.collection.insert(0, node)
@@ -84,12 +85,13 @@ class LinkList:
             self.max_size -= 1
             self.collection.pop(-1)
 
+
 def main():
     print("Starting Linked List\n")
 
     nlist = LinkList()
 
-    #nlist.add_to_head(Node(None))
+    # nlist.add_to_head(Node(None))
 
     nlist.show_nodes()
     nlist.remove_from_head()
@@ -99,9 +101,10 @@ def main():
     nlist.add_to_tail(Node(6))
     nlist.add_to_head(Node(1))
 
-    nlist.show_nodes();
+    nlist.show_nodes()
 
-    print(f"Max Size {nlist.max_size} \nNext To Head {nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n" )
+    print(f"Max Size {nlist.max_size} \nNext To Head {
+          nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n")
 
     nlist.show_nodes()
 
@@ -115,19 +118,21 @@ def main():
 
     nlist.remove_from_head()
 
-    nlist.show_nodes();
+    nlist.show_nodes()
 
     nlist.add_to_tail(Node(0))
     nlist.add_to_head(Node(8))
-    nlist.show_nodes();
+    nlist.show_nodes()
 
-    print(f"Max Size {nlist.max_size} \nNext To Head {nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n" )
+    print(f"Max Size {nlist.max_size} \nNext To Head {
+          nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n")
 
     nlist.remove_from_head()
     nlist.add_to_tail(Node(12))
-    nlist.show_nodes();
+    nlist.show_nodes()
 
-    print(f"Max Size {nlist.max_size} \nNext To Head {nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n" )
+    print(f"Max Size {nlist.max_size} \nNext To Head {
+          nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n")
 
     nlist.remove_from_head()
 
@@ -138,7 +143,9 @@ def main():
 
     nlist.show_nodes()
 
-    print(f"Max Size {nlist.max_size} \nNext To Head {nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n" )
+    print(f"Max Size {nlist.max_size} \nNext To Head {
+          nlist.head} -> {nlist.head.next} Past To Tail {nlist.tail} -> {nlist.tail.past}\n")
+
 
 if __name__ == '__main__':
     main()
