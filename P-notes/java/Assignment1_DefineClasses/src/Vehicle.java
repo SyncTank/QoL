@@ -11,10 +11,10 @@ public class Vehicle
   {
     Scanner scn = new Scanner(System.in);
     System.out.println("Enter tank size of your car:");
-    this.tankSize = scn.nextDouble();
+    this.setTankSize(scn.nextDouble());
 
     System.out.println("Enter efficiency of your car:");
-    this.efficiency = scn.nextDouble();
+    this.setEfficiency(scn.nextDouble());
 
     System.out.println("Fuel in Tank = " + this.getFuelInTank());
 
@@ -24,6 +24,32 @@ public class Vehicle
 
     System.out.println("Available Capacity in Tank = " + this.availableTankCapacity());
 
+  }
+  
+  // Copy Constructor
+  public Vehicle(Vehicle cpVehicle){
+    if (cpVehicle == null){
+      System.out.println("Invaild Vehicle object");
+    }
+    else{
+      this.tankSize = cpVehicle.tankSize;
+      this.efficiency = cpVehicle.efficiency;
+      this.fuelInTank = cpVehicle.fuelInTank;
+    }
+  }
+
+  // toString
+  public String toString(Vehicle aVehicle){
+    return this.getTankSize() + ", " + this.getEfficiency() + ", " + this.getFuelInTank();
+  }
+
+  // toEqual
+  public boolean equals(Vehicle eqVehicle){
+    if( (this.tankSize == eqVehicle.tankSize) && (this.efficiency == eqVehicle.efficiency) && (this.fuelInTank == eqVehicle.fuelInTank) ){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // Getters\accessors
@@ -39,17 +65,26 @@ public class Vehicle
     return this.fuelInTank;
   }
 
-  public double availableTankCapacity(){
-    return this.tankSize - this.fuelInTank;
+  // setter\mutator
+  private void setTankSize(double size){
+    this.tankSize = size;
   }
 
-  // setter\mutator
+  private void setEfficiency(double efficiency){
+    this.efficiency = efficiency;
+  }
+
+  private void setFuelInTank(double gallons){
+    this.fuelInTank += gallons;
+  }
+
+  // methods\actions
   public void addPetrol(double gallons){
     if (this.availableTankCapacity() < gallons ){
-      return;
+      throw new IllegalArgumentException("Gallons to add is more than the Tank's Capacity");
     }
     else {
-      this.fuelInTank += gallons;
+      this.setFuelInTank(gallons);
       return;
     }
   }
@@ -58,4 +93,7 @@ public class Vehicle
     return this.fuelInTank * this.efficiency;
   }
 
+  public double availableTankCapacity(){
+    return this.tankSize - this.fuelInTank;
+  }
 }
