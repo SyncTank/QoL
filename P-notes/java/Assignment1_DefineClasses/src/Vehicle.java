@@ -1,51 +1,50 @@
-import java.util.Scanner;
-
 public class Vehicle 
 {
   private double tankSize; // initial size of tank
   private double efficiency; // mpg store initial efficiency
-  private double fuelInTank = 0; // initial fuel in tank
+  private double fuelInTank; // initial fuel in tank
+  private int index;
+  private static int ID = 0;
   
   // Constructor
   public Vehicle()
   {
-    Scanner scn = new Scanner(System.in);
-    System.out.println("Enter tank size of your car:");
-    this.setTankSize(scn.nextDouble());
+    this(0,0,0);
+  }
 
-    System.out.println("Enter efficiency of your car:");
-    this.setEfficiency(scn.nextDouble());
-
-    System.out.println("Fuel in Tank = " + this.getFuelInTank());
-
-    System.out.println("Total Capacity in Tank = " + this.getTankSize());
-
-    System.out.println("Fuel Efficiency = " + this.getEfficiency());
-
-    System.out.println("Available Capacity in Tank = " + this.availableTankCapacity());
-
+  // Agrument Constructor
+  public Vehicle(double tankSize, double efficiency, double fuelInTank){
+    this.index = ID;
+    ID += 1;
+    this.setTankSize(tankSize);
+    this.setEfficiency(efficiency);
+    this.setFuelInTank(fuelInTank);
+    System.out.println("New car created : ID " + this.getIndex() + "\n" + this.toString() + "\n");
   }
   
   // Copy Constructor
   public Vehicle(Vehicle cpVehicle){
-    if (cpVehicle == null){
-      System.out.println("Invaild Vehicle object");
-    }
-    else{
-      this.tankSize = cpVehicle.tankSize;
-      this.efficiency = cpVehicle.efficiency;
-      this.fuelInTank = cpVehicle.fuelInTank;
-    }
+    this(cpVehicle.getTankSize(), cpVehicle.getEfficiency(), cpVehicle.getFuelInTank());
   }
 
   // toString
-  public String toString(Vehicle aVehicle){
-    return this.getTankSize() + ", " + this.getEfficiency() + ", " + this.getFuelInTank();
+  @Override
+  public String toString(){
+    return "Tank Size = " + this.getTankSize() + 
+    ",\nEfficiency = " + this.getEfficiency() + 
+    ",\nFuel in Tank = " + this.getFuelInTank() +
+    ",\nID = " + this.index;
   }
 
   // toEqual
-  public boolean equals(Vehicle eqVehicle){
-    if( (this.tankSize == eqVehicle.tankSize) && (this.efficiency == eqVehicle.efficiency) && (this.fuelInTank == eqVehicle.fuelInTank) ){
+  @Override
+  public boolean equals(Object obj){
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Vehicle eqVehicle = (Vehicle) obj;
+    if( (this.tankSize == eqVehicle.tankSize) && 
+    (this.efficiency == eqVehicle.efficiency) && 
+    (this.fuelInTank == eqVehicle.fuelInTank) ){
       return true;
     } else {
       return false;
@@ -65,23 +64,41 @@ public class Vehicle
     return this.fuelInTank;
   }
 
+  public int getIndex(){
+    return this.index;
+  }
+
   // setter\mutator
-  private void setTankSize(double size){
+  public void setTankSize(double size){
+    if (size < 0){
+      System.out.println("Invaild Size");
+      return;
+    }
     this.tankSize = size;
   }
 
-  private void setEfficiency(double efficiency){
+  public void setEfficiency(double efficiency){
+    if (efficiency < 0){
+      System.out.println("Invaild efficiency");
+      return;
+    }
     this.efficiency = efficiency;
   }
 
-  private void setFuelInTank(double gallons){
+  public void setFuelInTank(double gallons){
+    if (gallons < 0){
+      System.out.println("Invaild gallons");
+      return;
+    }
     this.fuelInTank += gallons;
   }
 
   // methods\actions
   public void addPetrol(double gallons){
     if (this.availableTankCapacity() < gallons ){
-      throw new IllegalArgumentException("Gallons to add is more than the Tank's Capacity");
+      System.out.println("Invaild operation, gallons to add is more than the Tank's Capacity");
+      return;
+      //throw new IllegalArgumentException("Gallons to add is more than the Tank's Capacity");
     }
     else {
       this.setFuelInTank(gallons);
