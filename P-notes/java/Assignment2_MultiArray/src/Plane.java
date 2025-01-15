@@ -8,7 +8,7 @@ public class Plane
   // Constructor
   public Plane()
   {
-    this(5,5);
+    this(7,4);
   }
 
   // Agrument Constructor
@@ -19,34 +19,16 @@ public class Plane
     }
 
     this.rows = rowsSize;
-    this.columns = columnsSize + 1;
+    this.columns = columnsSize + 1; // Offset to start on letter A
     this.planeSeats = new int[this.rows][this.columns];
-
-    String str = "Row : " + this.rows + " Columns : " + this.columns; 
-    System.out.println(str);
-
-    System.out.println("Seats options possible");
-    for (int seat = 0; seat < seats.length; seat++){
-      System.out.printf(seats[seat] + " ");
-    }
-
-    System.out.println("");
 
     for (int i = 0; i < this.rows; i++){
       this.planeSeats[i][0] = i + 1;
-      System.out.printf("%d ", this.planeSeats[i][0]);
       for (int j = 1; j < this.columns; j++){
         this.planeSeats[i][j] = j;
-        System.out.printf("%d ", this.planeSeats[i][j]);
       }
-      System.out.println();
     }
-
-    System.out.println("");
-
-    System.out.println("\nPlane has landed!");
-    System.out.println(this.toString());
-  }
+ }
   
   // Copy Constructor
   public Plane(Plane cpPlane){
@@ -101,8 +83,6 @@ public class Plane
     return this.columns;
   }
   
-  
-  // setter\mutator
   void crossSeat(int row, char seat){
     int toCross = 0;
     for (int i = 0; i < seats.length; i++){
@@ -111,27 +91,34 @@ public class Plane
         break;
       }
     }
+    if (this.planeSeats[row-1][toCross] == 0){
+      System.out.println("Seat has already been blocked out, Choose another");
+      return;
+    }
     this.planeSeats[row-1][toCross] = 0;
   }
-
 
   // methods\actions
   char seatLetter(int seat){
     switch(seat){
       case 0:
-        return seats[0];
+        return seats[0]; // X
       case 1:
-        return seats[1];
+        return seats[1]; // A
       case 2:
-        return seats[2];
+        return seats[2]; // B
       case 3:
-        return seats[3];
+        return seats[3]; // C
       case 4:
-        return seats[4];
+        return seats[4]; // D
       case 5:
-        return seats[5];
+        return seats[5]; // E
       case 6:
-        return seats[6];
+        return seats[6]; // F
+	  case 7:
+		return seats[7]; // G
+	  case 8:
+        return seats[8]; // H
       default:
         System.out.println("Out of bound letters");
         return ' ';
@@ -140,7 +127,6 @@ public class Plane
   
   boolean vaildSeat(char seat){
     for (int i = 1; i < seats.length; i++){
-        //System.out.printf(seats[i] + " = " + seat + "\n");
       if (seats[i] == seat){
         return true;
       }
