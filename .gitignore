@@ -8,3 +8,8 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.assets.cache
 P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfoInputs.cache
 P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 .vscode/settings.json
+*.json
+*.props
+*.editorconfig
+*.cache
+*.cs
