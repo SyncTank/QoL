@@ -1,2 +1,2 @@
 javac src/*.java -d bin/
-java -cp bin main
+java -cp bin Main

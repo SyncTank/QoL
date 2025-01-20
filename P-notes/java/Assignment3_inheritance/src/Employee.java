@@ -9,7 +9,7 @@ public class Employee extends Person {
     // Argument Constructor
     public Employee(String name, Date hireDate) {
         super(name); // Call the constructor of the Person class
-        this.hireDate = hireDate;
+        this.setHireDate(hireDate);
     }
 
     // Copy Constructor

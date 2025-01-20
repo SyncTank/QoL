@@ -29,7 +29,8 @@ public class Patient extends Person {
     // toString
     @Override
     public String toString() {
-        return "Name= " + this.getName() + ", Primary Physician= " + (primaryPhysician != null ? primaryPhysician.getName() : "None");
+        return "The name is: " + this.getName() + 
+    ", Primary Physician is: " + (primaryPhysician != null ? primaryPhysician.getName() : "None");
     }
 
     // equals

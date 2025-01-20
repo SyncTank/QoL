@@ -12,8 +12,8 @@ public class Doctor extends SalariedEmployee {
     // Argument Constructor
     public Doctor(String name, Date hireDate, float salary, String specialty, double fee) {
         super(name, hireDate, salary); // Call the constructor of the SalariedEmployee class
-        this.specialty = specialty;
-        this.fee = fee;
+        this.setSpecialty(specialty);
+        this.setFee(fee);
     }
 
     // Copy Constructor
@@ -42,7 +42,11 @@ public class Doctor extends SalariedEmployee {
     // toString
     @Override
     public String toString() {
-        return "Name=" + this.getName() + " Hired= " + this.getHireDate() + " Salary= " + this.getSalary() + " Specialty= " + this.getSpecialty() + " Fee= " + this.getFee();
+        return "The doctor " + this.getName() + 
+    " was hired on " + this.getHireDate() + 
+    " at Salary $" + this.getSalary() + 
+    "\nThe specialty is " + this.getSpecialty() + 
+    " and visiting fee is $" + this.getFee();
     }
 
     // equals

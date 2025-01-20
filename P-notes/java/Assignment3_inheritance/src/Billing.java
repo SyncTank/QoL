@@ -10,9 +10,9 @@ public class Billing {
 
     // Argument Constructor
     public Billing(double amountDue, Doctor physician, Patient customer) {
+        this.setPhysician(physician);
+        this.setCustomer(customer);
         this.setAmountDue(amountDue);
-        this.physician = physician;
-        this.customer = customer;
     }
 
     // Copy Constructor
@@ -47,7 +47,9 @@ public class Billing {
     // toString
     @Override
     public String toString() {
-        return "Amount Due= " + amountDue + ", Physician= " + (physician != null ? physician.getName() : "None") + ", Customer= " + (customer != null ? customer.getName() : "None");
+        return "Patient: " + (customer != null ? customer.getName() : "None") +
+    "\nDoctor: " + (physician != null ? physician.getName() : "None") + 
+    "\nAmountDue: $" + this.getAmountDue();
     }
 
     // equals

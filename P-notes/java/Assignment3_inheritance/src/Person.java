@@ -1,44 +1,39 @@
-public class Person
-{
-  private String name;
-  // Constructor
-  public Person()
-  {
-    this("");
-  }
+public class Person {
+    private String name;
 
-  // Agrument Constructor
-  public Person(String name){
-    this.setName(name);
-  }
-  
-  // Copy Constructor
-  public Person(Person cpPerson){
-    this(cpPerson.getName());
-  }
+    // Default Constructor
+    public Person() {
+        this("");
+    }
 
-  public String getName() {
-    return this.name;
-  }
+    // Argument Constructor
+    public Person(String name) {
+        this.setName(name);
+    }
 
-  public void setName(String name){
-    this.name = name;
-  }
+    // Copy Constructor
+    public Person(Person cpPerson) {
+        this(cpPerson.getName());
+    }
 
-  // toString
-  @Override
-  public String toString(){
-    return "Name=" + this.getName();
-  }
+    public String getName() {
+        return this.name;
+    }
 
-  // toEqual
-  @Override
-  public boolean equals(Object obj){
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
-    Person eqPerson = (Person) obj;
-    return this.name.equals(eqPerson.name);
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    // toString
+    @Override
+    public String toString() {
+        return "Name=" + this.getName();
+    }
 
+    // equals
+    public boolean equals(Person other) {
+        if (this == other) return true;
+        if (other == null) return false;
+        return this.name.equals(other.name);
+    }
 }
