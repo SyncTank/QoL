@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "FB48m0z7v6LSH2wJ6JPCgn3xWnWba7WP+ZUm2sdZv6DEIN6ZCCScmROolpR9YJoaiP/pIWFVKXIGmTQGW8ae1w==",
+  "dgSpecHash": "YehS18b/WrY=",
   "success": true,
-  "projectFilePath": "E:\\Development\\Programming Notes\\C#\\T1\\T1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\ralvarado\\OneDrive - Chauvet Lighting\\Documents\\GitHub\\QoL\\P-notes\\C#\\T1\\T1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ralvarado\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\ralvarado\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\ralvarado\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\ralvarado\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.20\\microsoft.netcore.app.host.win-x64.7.0.20.nupkg.sha512"
+  ],
   "logs": []
 }

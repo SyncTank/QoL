@@ -26,3 +26,11 @@ E:\Development\Programming Notes\C#\T1\obj\Debug\net7.0\refint\T1.dll
 E:\Development\Programming Notes\C#\T1\obj\Debug\net7.0\T1.pdb
 E:\Development\Programming Notes\C#\T1\obj\Debug\net7.0\T1.genruntimeconfig.cache
 E:\Development\Programming Notes\C#\T1\obj\Debug\net7.0\ref\T1.dll
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.AssemblyInfoInputs.cache
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.AssemblyInfo.cs
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.csproj.CoreCompileInputs.cache
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.sourcelink.json
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.dll
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\refint\T1.dll
+C:\Users\ralvarado\OneDrive - Chauvet Lighting\Documents\GitHub\QoL\P-notes\C#\T1\obj\Debug\net7.0\T1.pdb
