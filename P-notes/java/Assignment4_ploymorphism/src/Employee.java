@@ -75,8 +75,10 @@ public class Employee {
     return this.Present;
   }
 
-  public void getDeducation() {
-
+  public float calDeducation() {
+    int totalWorkDays = 20;
+    float dailySalary = this.addBonus() / totalWorkDays;
+    return (dailySalary * (totalWorkDays - this.Present));
   }
 
   // toString
