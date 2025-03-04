@@ -24,9 +24,22 @@ public class Main {
             }
         }
 
+        // loop to check for existing temps
+        File tempfile = null;
+        int counter = 0;
+        String newtemp = "";
+        while(exists){
+          tempfile = new File("temp" + counter + ".txt");
+          if (!tempfile.exists()) {
+            newtemp = tempfile.getName();
+            exists = false;
+          }
+        }
+
         // Read source and write temp file
         System.out.println("Creating temp");
-        try (PrintWriter writer = new PrintWriter("temp.txt");
+        try (
+            PrintWriter writer = new PrintWriter(newtemp);
             Scanner fileScan = new Scanner(new FileInputStream(file))) {
             while (fileScan.hasNextLine()) {
                 String line = fileScan.nextLine();
@@ -46,7 +59,7 @@ public class Main {
           file.delete();
         }
         try {
-          File nfile = new File("temp.txt");
+          File nfile = new File(newtemp);
           nfile.renameTo(file);
         } catch (Exception err){
           System.out.println("File not found " + err);
@@ -54,7 +67,7 @@ public class Main {
 
         // delete temp
         System.out.println("Deleting temp" );
-        File tempFile = new File("temp.txt");
+        File tempFile = new File(newtemp);
         if (tempFile.exists()) {
           tempFile.delete();
         }
