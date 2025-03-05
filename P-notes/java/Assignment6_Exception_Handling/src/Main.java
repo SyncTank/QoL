@@ -100,7 +100,7 @@ public class Main {
     public static boolean yearChecker(String year) throws YearException {
         int number = Integer.parseInt(year);
         if (number < 1000 || number > 3000) {
-            throw new YearException("Year falls out of range!");
+            throw new YearException("Invalid year. Reenter a valid year:");
         }
         return true;
     }
@@ -117,7 +117,7 @@ public class Main {
     public static boolean monthChecker(String month) throws MonthException {
         int number = Integer.parseInt(month);
         if (number < 1 || number > 12) {
-            throw new MonthException("Month falls out of range!");
+            throw new MonthException("Invaild Month. Reenter a valid month:");
         }
         return true;
     }
@@ -128,7 +128,7 @@ public class Main {
         int monthNumber = Integer.parseInt(month);
 
         if (dayNumber < 1) {
-            throw new DayException("Day falls out of range!");
+            throw new DayException("Invaild day. Reenter a valid day:");
         }
 
         switch (monthNumber) {
@@ -140,7 +140,7 @@ public class Main {
             case 10: // October
             case 12: // December
                 if (dayNumber > 31) {
-                    throw new DayException("Day falls out of range!");
+                    throw new DayException("Invaild day. Reenter a valid day:");
                 }
                 break;
             case 4: // April
@@ -148,22 +148,22 @@ public class Main {
             case 9: // September
             case 11: // November
                 if (dayNumber > 30) {
-                    throw new DayException("Day falls out of range!");
+                    throw new DayException("Invaild day. Reenter a valid day:");
                 }
                 break;
             case 2: // February
                 if (isLeapYear(yearNumber)) {
                     if (dayNumber > 29) {
-                        throw new DayException("Day falls out of range!");
+                        throw new DayException("Invaild day. Reenter a valid day:");
                     }
                 } else {
                     if (dayNumber > 28) {
-                        throw new DayException("Day falls out of range!");
+                        throw new DayException("Invaild day. Reenter a valid day:");
                     }
                 }
                 break;
             default:
-                throw new DayException("Invalid month!");
+                throw new DayException("Invalid month. Reenter a valid month:");
         }
         return true;
     }
