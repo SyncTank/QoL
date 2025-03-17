@@ -35,6 +35,23 @@ typedef struct AgentStats {
   float hover;
 } Stats;
 
+// issue is that
+// list of big nodes
+// small data has locations
+//
+
+typedef struct {
+  struct SmallNode *next;
+  struct SmallNode *prev;
+} SmallNode;
+
+typedef struct {
+  SmallNode node;
+  int data;
+} BigNode;
+
+void test() { BigNode bnode[5]; }
+
 typedef struct Character {
   int ID;
   Slot Abilities[1]; // 2 Character based Slots
