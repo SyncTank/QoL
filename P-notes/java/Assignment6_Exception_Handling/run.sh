@@ -1,4 +1,4 @@
-javac Rudiyer/*.java -d bin/
+javac src/*.java -d bin/
 java -cp bin Main
 
-java -cp bin OnlineFoodOrderSystem
+
