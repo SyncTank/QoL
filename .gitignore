@@ -13,3 +13,4 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 *.editorconfig
 *.cache
 *.cs
+*.vsidx
