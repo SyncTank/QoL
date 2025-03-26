@@ -16,3 +16,6 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 *.vsidx
 *.bin
 *.vsidx
+*.vsidx
+*.bin
+*.v2
