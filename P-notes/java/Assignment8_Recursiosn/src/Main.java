@@ -10,23 +10,26 @@ public class Main {
 
       hands = scn.nextInt();
 
-      int handshakes = handshake2(hands);
-      System.out.println("If everyone shakes hands once, there will be " + handshakes + " handsakes.");
+      int handshakes = handshake(hands) - hands;
+      System.out.println("\nIf everyone shakes hands once, there will be " + handshakes + " handsakes.\n");
+
+      System.out.println("Enter value for n: ");
+      int n = scn.nextInt();
+
+      System.out.println("Enter value for r: ");
+      int r = scn.nextInt();
+
+      Task2 comb = new Task2(n, r);
+      System.out.println("There are " + comb.toString() + " possible combinations.");
   }
 
   public static int handshake(int hands){
-    int results = (hands * (hands - 1)) / 2;
-    return results;
-  }
-
-  public static int handshake2(int hands){
     int results = 0;
     if (hands == 0){
       return results;
     }
-    System.out.println(results + " " + hands);
-    results += handshake2(hands-1);
-    return  results;
+    results += handshake(hands - 1);
+    return  results + hands;
   }
 
 }
