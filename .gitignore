@@ -12,7 +12,6 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 *.props
 *.editorconfig
 *.cache
-*.cs
 *.vsidx
 *.bin
 *.vsidx
