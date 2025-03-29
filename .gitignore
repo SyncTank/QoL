@@ -19,3 +19,7 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 *.vsidx
 *.bin
 *.v2
+*.vsidx
+P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
+*.bin
+*.txt
