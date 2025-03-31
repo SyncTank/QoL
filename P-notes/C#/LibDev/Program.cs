@@ -1,5 +1,6 @@
 ﻿using LibDev;
 using System;
+using UtilAI;
 using static LibDev.BT;
 
 namespace Core
@@ -8,13 +9,15 @@ namespace Core
     {
         static void Main(string[] args)
         {
-            FiniteStateMachine fsm = new();
+            FSM.FiniteStateMachine fsm = new();
 
             Console.WriteLine("Current State: " + fsm.GetCurrentState());
             fsm.ProcessInput("begin");
             Console.WriteLine("Current State: " + fsm.GetCurrentState());
             fsm.ProcessInput("process");
             Console.WriteLine("Current State: " + fsm.GetCurrentState());
+
+
 
             ChannelEvent channelEvent = new();
             channelEvent.Init();
@@ -40,6 +43,14 @@ namespace Core
 
             // Execute behavior tree
             root.Execute();
+
+            UtilAI.NPC npc = new NPC
+            {
+                Health = 40,
+                EnemyDistance = 15
+            };
+
+            npc.DecideAction(); // Output: "NPC seeks cover!"
 
         }
     }
