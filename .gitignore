@@ -22,6 +22,7 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 *.bin
 *.txt
+<<<<<<< Updated upstream
 *.vsidx
 P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 *.bin
@@ -32,3 +33,10 @@ P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 P-notes/C\#/LibDev/obj/Debug/net9.0/LibDev.AssemblyInfo.cs
 P-notes/C\#/LibDev/obj/Debug/net9.0/LibDev.csproj.FileListAbsolute.txt
 *.dll
+=======
+*.exe
+*.pdb
+*.dll
+*.v2
+P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
+>>>>>>> Stashed changes
