@@ -1,6 +1,7 @@
 ﻿using LibDev;
 using System;
 using UtilAI;
+using Google.Protobuf;
 using static LibDev.BT;
 
 namespace Core
@@ -9,6 +10,40 @@ namespace Core
     {
         static void Main(string[] args)
         {
+
+            // Create a new AddressBook
+            var addressBook = new AddressBook();
+
+            // Add a Person to the AddressBook
+            var person = new Person
+            {
+                Name = "John Doe",
+                Id = 1234,
+                Email = "johndoe@example.com"
+            };
+            addressBook.People.Add(person);
+
+            // Serialize the AddressBook to a binary file
+            using (var output = File.Create("addressbook.bin"))
+            {
+                addressBook.WriteTo(output);
+            }
+
+            // Deserialize the binary file back to an AddressBook
+            AddressBook newAddressBook;
+            using (var input = File.OpenRead("addressbook.bin"))
+            {
+                newAddressBook = AddressBook.Parser.ParseFrom(input);
+            }
+
+            // Print the deserialized data
+            foreach (var p in newAddressBook.People)
+            {
+                Console.WriteLine($"Name: {p.Name}, ID: {p.Id}, Email: {p.Email}");
+            }
+
+
+
             FSM.FiniteStateMachine fsm = new();
 
             Console.WriteLine("Current State: " + fsm.GetCurrentState());
