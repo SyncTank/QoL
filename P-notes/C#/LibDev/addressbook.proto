@@ -9,3 +9,47 @@ message Person {
 message AddressBook {
 	repeated Person people = 1;
 }
+
+message Quaternion {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float w = 4;
+}
+
+message Vector3 {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message Node3D {
+    Quaternion rotation = 1;
+    Vector3 position = 2;
+}
+
+message Entity {
+    Node3D node3d = 1;
+    string mesh = 2;
+    string state = 3;
+    string behavior = 4;
+    string name = 5;
+}
+
+message Monkey {
+    Entity entity = 1;
+    string name = 2;
+}
+
+message EntityPool {
+    repeated Entity items = 1;
+}
+
+message GenericEntity {
+    oneof data {
+        string string_data = 1;
+        int32 int_data = 2;
+        float float_data = 3;
+        // Add other types as needed
+    }
+}

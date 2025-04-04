@@ -11,6 +11,16 @@ namespace Core
         static void Main(string[] args)
         {
 
+            // Creating a generic object to store an integer
+            GenericEntity<int> intObject = new GenericEntity<int>(42);
+            Console.WriteLine(intObject.GetData()); // Output: 42
+
+            EntityPool<GenericEntity> enList = new EntityPool<GenericEntity>();
+
+        }
+
+        void testCallers()
+        {
             // Create a new AddressBook
             var addressBook = new AddressBook();
 
@@ -86,8 +96,8 @@ namespace Core
             };
 
             npc.DecideAction(); // Output: "NPC seeks cover!"
-
         }
+
     }
 
 
