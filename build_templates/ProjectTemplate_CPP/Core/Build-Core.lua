@@ -10,6 +10,9 @@ project "Core"
    includedirs
    {
       "Source"
+	  "../include/*/*"
+	  "../include/*"
+	  "../libs/*"
    }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")

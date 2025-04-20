@@ -5,6 +5,8 @@ project "App"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
+	targetname "Template"
+
    files { "Source/**.h", "Source/**.cpp", "Source/**.c" }
 
    includedirs
@@ -12,9 +14,15 @@ project "App"
       "Source",
 
 	  -- Include Core
+	  "../include/*/*"
+	  "../include/*"
+	  "../libs/*"
 	  "../Core/Source"
    }
+   
+   -- libdirs{}
 
+	-- link libraries Cores
    links
    {
       "Core"
@@ -25,7 +33,9 @@ project "App"
 
    filter "system:windows"
        systemversion "latest"
-       defines { "WINDOWS" }
+       defines { "WINDOWS" } -- static point
+	   
+	linkoptions { "/SUBSYSTEM:WINDOWS", "/VERBOSE", "/MANIFEST:embed" }
 
    filter "configurations:Debug"
        defines { "DEBUG" }
