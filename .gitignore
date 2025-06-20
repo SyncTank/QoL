@@ -40,3 +40,5 @@ P-notes/C\#/LibDev/obj/Debug/net9.0/LibDev.csproj.FileListAbsolute.txt
 *.v2
 P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 >>>>>>> Stashed changes
+/P-notes/C/uitest/CMakeFiles
+/P-notes/C/uitest/libs/Misc
