@@ -745,50 +745,32 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    -- 'folke/tokyonight.nvim',
+  {
+    --'folke/tokyonight.nvim',
     'scottmckendry/cyberdream.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('cyberdream').setup {
         styles = {
-          cache = true,
-          transparent = false, -- Enable transparent background
-          italic_comments = false, -- Enable italics for comments
-          hide_fillchars = false, -- Replace all fillchars with ' ' for a clean look
-          borderless_telescope = true, -- Modern borderless telescope theme
-          terminal_colors = true, -- Set terminal colors used in `:terminal` -- Disable italics in comments
-          theme = {
-            variant = 'default',
-            highlights = {
-              Comment = { fg = '#696969', bg = 'NONE', italic = true },
-            },
-            overrides = function(colors)
-              return {
-                Comment = { fg = colors.green, bg = 'NONE', italic = true },
-                ['@property'] = { fg = colors.magenta, bold = true },
-              }
-            end,
-            colors = {
-              -- Override specific colors
-              bg = '#0B0C13',
-              green = '#00ff00',
-              magenta = '#ff00ff',
-            },
-          },
+          comments = { italic = false }, -- Disable italics in comments
+        },
+        colors = {
+          -- Override specific colors
+          bg = '#0B0C13',
+          green = '#00ff00',
+          magenta = '#ff00ff',
         },
       }
 
       -- Load the colorscheme here.
-      -- vim.cmd.colorscheme 'tokyonight-night'
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'cyberdream'
     end,
   },
+
+
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
