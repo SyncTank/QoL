@@ -3,6 +3,8 @@
 # Define the directories
 LIB_DIR="libs"
 MISC_DIR="$LIB_DIR/Misc"
+CDIR=$(pwd)
+GDIR="$CDIR/$MISC_DIR"
 declare -a libraries=(
     [0]=https://github.com/glfw/glfw.git #glfw window_context
     [1]=https://github.com/Immediate-Mode-UI/Nuklear.git #nuklear GUI_UI
@@ -28,10 +30,10 @@ if [[ "$1" == "init" && $# -eq 1 ]]; then
         echo "Directory already exists: $MISC_DIR"
     fi
 
-    echo "Clone libraries into: $MISC_DIR"
+    echo "Clone libraries into: $GDIR"
+    cd $GDIR
     for i in ${libraries[@]}
     do
-        cd $MISC_LIB
         echo "Cloning $i"
         git clone "$i"
     done
@@ -40,7 +42,9 @@ elif [[ $# -eq 0 || "$1" == "update" ]]; then
         echo "Please run init to setup"
         exit 1
     else
-        mapfile -t files < <(find "$MISC_DIR" -mindepth 1 -maxdepth 1 -type d)
+        echo "Updating libraries found: $GDIR"
+        cd $GDIR
+        files=(*/)
         for dir in "${files[@]}"; do
             if [ -d "$dir/.git" ]; then
                 echo "Updating: $dir"
@@ -55,4 +59,3 @@ elif [[ ( "$1" == "help" || "$1" == "-h" || "$1" == "-help" ) && $# -eq 1 ]]; th
 else
     echo "Pass a valid argument or leave empty"
 fi
-

@@ -19,7 +19,7 @@ namespace LibDev
         private string _state;
         private string _behavior;
         private string _name;
-    }
+    } 
 
     public class Monkey : Node3D 
     { 
