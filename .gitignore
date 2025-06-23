@@ -1,12 +1,5 @@
-
-P-notes/C\#/T1/obj/T1.csproj.nuget.g.props
-P-notes/C\#/T1/obj/T1.csproj.nuget.dgspec.json
-P-notes/C\#/T1/obj/project.nuget.cache
-P-notes/C\#/T1/obj/project.assets.json
-P-notes/C\#/T1/obj/Debug/net7.0/T1.GeneratedMSBuildEditorConfig.editorconfig
-P-notes/C\#/T1/obj/Debug/net7.0/T1.assets.cache
-P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfoInputs.cache
-P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
+P-notes/C\#/T1/obj
+P-notes/C\#/T1/obj/Debug/net7.0
 .vscode/settings.json
 *.json
 *.props
@@ -19,10 +12,7 @@ P-notes/C\#/T1/obj/Debug/net7.0/T1.AssemblyInfo.cs
 *.bin
 *.v2
 *.vsidx
-P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 *.bin
-*.txt
-<<<<<<< Updated upstream
 *.vsidx
 P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 *.bin
@@ -30,15 +20,10 @@ P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
 *.exe
 *.pdb
 *.exe
-P-notes/C\#/LibDev/obj/Debug/net9.0/LibDev.AssemblyInfo.cs
-P-notes/C\#/LibDev/obj/Debug/net9.0/LibDev.csproj.FileListAbsolute.txt
-*.dll
-=======
+P-notes/C\#/LibDev/obj/Debug/net9.0
 *.exe
 *.pdb
 *.dll
 *.v2
 P-notes/C\#/LibDev/.vs/LibDev/v17/.suo
->>>>>>> Stashed changes
-/P-notes/C/uitest/CMakeFiles
 /P-notes/C/uitest/libs/Misc
