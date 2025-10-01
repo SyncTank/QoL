@@ -770,8 +770,6 @@ require('lazy').setup({
     end,
   },
 
-
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -840,6 +838,7 @@ require('lazy').setup({
         'query',
         'vim',
         'vimdoc',
+        'java',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
