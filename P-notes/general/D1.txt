@@ -1,0 +1,39 @@
+Game were you solve the maze
+
+# Game Modes
+ - Levels Select
+ - Endless
+ 
+Things unlocked in Level Select are added into Endless
+You can pick and choose. FLAGS
+
+Touch Node to active, Move to connect. All Connected completes level.
+
+Grid of Nodes with different types of Nodes : 
+    - Circle are normal connectors.
+    - Black Sqaures dont need to be connect just blocks paths.
+    - Triangle Colors Teleports connection follow to next node.
+
+64 Max Size
+
+
+# Hints
+Minimum of 3 hints before a ad is played.
+Resets ads by day.
+
+# Solver
+Grid Solver were Vaild
+    - Hamiltonian path (visit all, with no revisits)
+    - Doesnt return to origin
+    - DFS, Prim’s, or Kruskal’s?
+    - block no more than 20–25% of the grid
+    
+
+# Save
+Map Data
+
+# Audio
+Controller
+
+# Scene Loaders / Passer
+

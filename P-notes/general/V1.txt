@@ -1,0 +1,57 @@
+TYPES:
+	- short more of review / trailer of game with recommendation
+	- long form break down of game and structure
+	
+# Short
+A lot to do
+Experience is fun
+small learning curve to pick up
+Grindy or some time investment
+Although its a MMO all activties can be done solo
+Not much in terms of group activites to do
+Patches are polled and approved by the community
+GameModes
+
+OSRS:
+
+Ironman vs Mains/Normals
+Minigames vs Normal play
+Vertical vs horizntal progress
+Difference methods of play
+Endgame speed vs consistenty 
+plugins / code back-end limitations
+Raids
+
+# Skills
+
+Exp methods 
+- meta vs nonmeta 
+- activity exp
+- reward exp
+
+cross-skill - interact ability
+
+
+# Combat
+
+Weapon
+- Weapon Style
+- Weapon Types 
+
+				   Melee - Magic - Range
+	
+Slash-Crush-Stab | Fire-Water-Earth-Wind | Dart-Arrow-bolts 
+
+Difference of passive vs active effects
+1h vs 2h weapons
+Distance/range
+Speed(tick)
+Combat Style buff
+
+# Monster
+Weakness
+
+Buffs skills 
+Potions / food / weapons
+
+PVM / PVP
