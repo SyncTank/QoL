@@ -1,0 +1,89 @@
+
+OSRS web :
+	search bar
+	parse JSON data
+	save JSON data
+	query JSON data
+	User accounts
+	Save User data
+	items card short desrcitor
+	monster card short desrcitor
+	favorite items
+	side bars for items | monsters 
+
+Game unreal : menu - ship - maps - gameplay logic - weapons 
+	Game timer - understanding time dilation with speed and velocity
+	character control 
+	character selectation
+	character setup
+	save player data
+	level theme - design - approach - scale - references - art style
+	gamemode logic
+	weapons
+	
+	
+	
+	
+Stories -> commuciate planning cycle for items
+Epics build out for Tasks Associated in sprints 
+
+
+iterate through perms
+mouse hybird
+Do clicking, 2 sensors. Bottom and trackball
+
+
+
+Roguelite - tower defense
+
+Prefdefined classes - risk of rain
+
+warrior - archer - mage
+
+
+music game - training : 8 bit loop
+
+
+
+Game's muiltplayer sessons be in the same demo / main game / friend pass
+i.e demo limits user however can play with others who purchased game
+
+Worlds you have slots allocated to teams globally
+MSI Mid season invintation you fight for the extra slots for worlds
+
+Can be in two states in same time.
+
+Base states:
+walk, run, jump, counch, action
+
+Generic action:
+
+HTMX Tailwind Alphine.js Go/templ
+shadcn/ui
+
+
+
+  Node
+    Collision
+    Visual
+    
+    [0,0] [1,0] [2,0]
+    [0,1] [1,1] [2,1]
+    [0,2] [1,2] [2,2]
+    [0,3] [1,3] [2,3]
+    
+    left, right = [0,-1], [0,1]
+    down, up = [-1,0], [1,0]
+    
+    Node 
+        - position V2 grid
+        - self manager | Destory / Setup | type? circle square? clicked?
+        - disable / enable of other elements
+        - check if enable and return position?
+        - caller to methods
+        
+    Collision - on touch call to Node
+    Visual - grow/shrink & colour self
+
+
+

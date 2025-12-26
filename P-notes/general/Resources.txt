@@ -1,0 +1,139 @@
+Unity Collision:
+https://youtu.be/6h5FoPi3SY0
+
+Fear AI paper:
+http://alumni.media.mit.edu/~jorkin/gdc2006_orkin_jeff_fear.pdf
+
+Tricks:
+https://www.youtube.com/shorts/NdD4G8yyS3g
+
+Faster HTML
+https://htmx.org/
+
+Mocap:
+https://www.rokoko.com/products/smartsuit-pro
+
+Kitbash:
+https://www.youtube.com/watch?v=rulrjt25ZQk
+
+EMU: 
+https://docs.google.com/spreadsheets/d/1dItpqk-koxZJ3s5mGArWPHo2OGPj3R-Wc_q3bOrTMqg/edit#gid=0
+
+Water works:
+https://www.youtube.com/watch?v=EMb_FUmr0Ts
+
+Procedural Texture:
+https://www.youtube.com/watch?v=SdAfABtc-l4
+
+Database Paradigms:
+https://www.youtube.com/watch?v=W2Z7fbCLSTw
+
+Portals:
+https://www.youtube.com/watch?v=ZXG1x0SP5Fw
+
+Physics Engine:
+https://www.youtube.com/watch?v=TtgS-b191V0
+
+Wave Function Collasp:
+https://medium.com/swlh/wave-function-collapse-tutorial-with-a-basic-exmaple-implementation-in-python-152d83d5cdb1#:~:text=WaveFunctionCollapse%20algorithm%20created%20by%20Maxim%20Gummin%20and%20published,creating%20tilesets%2C%20maps%20or%20other%20forms%20of%20art
+
+Bounds:
+https://praneilkamat.com/unity-calculating-bounding-boxes-for-objects-in-3d-space/
+
+Test Game:
+https://www.youtube.com/watch?v=ahvkFKSge2A
+
+Sound Proof:
+https://soundproofguide.com/recommended-soundproofing-products-material/
+
+Animate Programmer:
+https://www.youtube.com/watch?v=ZwLekxsSY3Y
+
+Procedural Animations Math:
+https://www.youtube.com/watch?v=KPoeNZZ6H4s
+
+Unity Multiplayer:
+https://www.youtube.com/watch?v=stJ4SESQwJQ
+
+Python:
+https://realpython.com/python-web-applications/
+
+Texture Baking:
+http://wiki.polycount.com/wiki/Texture_Baking
+
+NoClip:
+https://www.youtube.com/c/NoclipVideo/videos
+
+Retop model:
+https://www.reddit.com/r/BlenderSecrets/comments/vj5i37/how_to_retopo/?utm_source=share&utm_medium=web2x&context=3\
+
+Shader:
+https://www.alanzucconi.com/
+
+Learn:
+https://learnxinyminutes.com/
+
+Math:
+https://www.youtube.com/watch?v=pTnEG_WGd2Q
+
+Print PCB:
+https://www.youtube.com/watch?v=8u4izLA-SCo
+
+Tool:
+https://www.youtube.com/watch?v=SjJulcvTA7Y
+
+Multiplayer:
+https://youtu.be/UAUdIQZKV88
+
+CAD:
+https://www.youtube.com/watch?v=92QmjS-xDaI
+
+Game Dev:
+https://www.youtube.com/playlist?list=PLFt_AvWsXl0eBW2EiBtl_sxmDtSgZBxB3
+
+Cull:
+https://assetstore.unity.com/packages/tools/camera/instantoc-dynamic-occlusion-culling-lod-6391
+
+AI:
+https://www.youtube.com/watch?v=XBzTJOYgW0M
+
+Multiplayer:
+https://www.youtube.com/watch?v=ArdKxWZXBuE
+
+Multiplayer:
+https://www.youtube.com/watch?v=3uqMdsrpzEU
+
+Multiplayer:
+https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
+EMU:
+https://vimm.net/
+
+Photo:
+https://www.pexels.com/
+
+Formatter:
+https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide
+
+Book:
+https://www.doradolist.com/main.html
+
+Multiplayer:
+https://github.com/miloyip/game-programmer
+
+Animation:
+https://www.reddit.com/r/Unity3D/comments/fqabkx/i_tried_to_explain_procedural_animation_in_10/
+
+API:
+https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
+
+Disa:
+https://hvmi.github.io/blog/2020/11/04/bddisasm.html
+
+Dev:
+https://dev.tube/
+
+Physics:
+https://www.youtube.com/watch?v=az4Oyv8ZS7I
+
+
