@@ -25,8 +25,34 @@
 (load-theme 'synctank t)
 
 ;; 2. UI Cleanup
+;;(blink-cursor-mode -1)
 (tool-bar-mode -1)
-(menu-bar-mode 1)
 (scroll-bar-mode -1)
-(blink-cursor-mode -1)
 (setq-default cursor-type 'box)
+(global-display-line-numbers-mode)
+
+;; Adding `simpc` to load-path so `require` can find it
+(add-to-list 'load-path (expand-file-name "local" user-emacs-directory))
+(require 'simpc-mode)
+;; Automatically enabling simpc-mode on files with extensions like .h, .c, .cpp, .hpp
+(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+
+;; hide menu-bar till f10 is clicked
+(menu-bar-mode -1)
+(defun synctank/toggle-menu-bar()
+  "Toggle the menu bar visibility."
+  (interactive)
+  (menu-bar-mode (if menu-bar-mode -1 1)))
+(global-set-key (kbd "<f10>") 'synctank/toggle-menu-bar)
+(global-set-key (kbd "<f10>") 'menu-bar-open)
+
+;; Load font if exists
+(defun synctank/set-font ()
+  (let ((font (cond
+               ((find-font (font-spec :name "Consolas")) "Consolas")
+               ((find-font (font-spec :name "Ubuntu Mono")) "Ubuntu Mono")
+               ((find-font (font-spec :name "DejaVu Sans Mono")) "DejaVu Sans Mono")
+               (t "monospace"))))
+    (set-face-attribute 'default nil :font font :height 120)))
+
+(synctank/set-font)
