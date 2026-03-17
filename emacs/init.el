@@ -30,12 +30,20 @@
 (scroll-bar-mode -1)
 (setq-default cursor-type 'box)
 (global-display-line-numbers-mode)
+(ido-mode 1)
+(ido-everywhere 1)
+(which-key-mode)
 
 ;; Adding `simpc` to load-path so `require` can find it
 (add-to-list 'load-path (expand-file-name "local" user-emacs-directory))
 (require 'simpc-mode)
 ;; Automatically enabling simpc-mode on files with extensions like .h, .c, .cpp, .hpp
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+
+;; no need for sig key
+(setq package-check-signature nil)
+
+(hl-line-mode)
 
 ;; hide menu-bar till f10 is clicked
 (menu-bar-mode -1)

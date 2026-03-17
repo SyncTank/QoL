@@ -21,3 +21,7 @@
   :config
   (setq org-log-done 'time))
 
+;; tree-sitter : better parsing
+(use-package treesit-auto
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all))

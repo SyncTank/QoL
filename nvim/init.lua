@@ -18,6 +18,52 @@ vim.cmd 'set foldmethod=expr'
 vim.cmd 'set foldexpr=nvim_treesitter#foldexpr()'
 vim.cmd 'set nofoldenable'
 
+local function find_bash()
+  if vim.fn.has 'win32' == 1 then
+    -- Run 'where bash' to find the executable path on Windows
+    local handle = io.popen 'where bash 2>nul'
+    if handle then
+      local result = handle:read '*l' -- Read only the first line
+      handle:close()
+
+      -- If 'where' found a path, return it. Otherwise, fallback to bash.exe
+      if result and result ~= '' then
+        -- Wrap in quotes to handle spaces in "Program Files"
+        return '"' .. result .. '"'
+      end
+    end
+    return 'bash.exe' -- Generic fallback for Windows
+  else
+    -- On Fedora/Linux, 'bash' is standard in the PATH
+    return 'bash'
+  end
+end
+
+-- Explicitly tell Neovim to use Git Bash and NOT WSL
+local shell_path = find_bash()
+vim.opt.shell = shell_path
+vim.opt.shellcmdflag = '-c'
+
+vim.g.smart_command = './run.sh'
+
+function SetRunCommand()
+  local new_cmd = vim.fn.input('Set run command: ', vim.g.smart_command)
+  if new_cmd ~= '' then
+    vim.g.smart_command = new_cmd
+    print('\nRun command set to: ' .. vim.g.smart_command)
+  end
+end
+
+function ExecuteRunCommand()
+  vim.cmd 'write'
+  -- We use 'sh ' followed by the command
+  vim.cmd('split | term ' .. vim.g.smart_command)
+end
+
+-- Mappings
+vim.keymap.set('n', '<leader>=', ExecuteRunCommand, { desc = 'Execute cached run command' })
+vim.keymap.set('n', '<leader>-', SetRunCommand, { desc = 'Set custom run command' })
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 --  For more options, you can see `:help option-list`
