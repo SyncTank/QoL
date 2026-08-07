@@ -23,10 +23,6 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- Telescope is a fuzzy finder that comes with a lot of different things that
-      -- it can fuzzy find! It's more than just a "file finder", it can search
-      -- many different aspects of Neovim, your workspace, LSP, and more!
-      --
       -- The easiest way to use Telescope, is to start by doing something like:
       --  :Telescope help_tags
       --
@@ -38,13 +34,38 @@ return {
       --  - Insert mode: <c-/>
       --  - Normal mode: ?
       --
-      -- This opens a window that shows you all of the keymaps for the current
-      -- Telescope picker. This is really useful to discover what Telescope can
-      -- do as well as how to actually do it!
-
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
+        defaults = {
+          -- Configure Ripgrep options for live_grep
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden', -- Search hidden files (e.g., .env)
+            '--glob', '!**/.git/*', -- Exclude git directory
+          },
+          mappings = {
+            i = { 
+              ['<c-enter>'] = 'to_fuzzy_refine',
+              -- Optional: Add a shortcut to scroll the preview window
+              ['<C-d>'] = require('telescope.actions').preview_scrolling_down,
+              ['<C-u>'] = require('telescope.actions').preview_scrolling_up,
+            },
+          },
+        },
+        pickers = {
+          find_files = {
+            -- Find hidden files, but ignore .git folder
+            hidden = true,
+            find_command = { 'rg', '--files', '--hidden', '-g', '!**/.git/*' },
+          },
+        },
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --

@@ -2,7 +2,7 @@ return {
   'yaocccc/nvim-foldsign',
   -- It relies on tree-sitter or cursor holds, so we load it when opening a file
   event = { 'BufReadPost', 'BufNewFile' },
-  dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  --dependencies = { 'nvim-treesitter/nvim-treesitter' },
 
   -- Wire the toggle function cleanly into which-key
   keys = {

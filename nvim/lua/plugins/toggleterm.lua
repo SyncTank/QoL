@@ -2,12 +2,13 @@ return {
   'akinsho/toggleterm.nvim',
   version = "*",
   keys = {
-    -- Lazy load when pressing <leader>t in normal mode
-    { '<leader>t', '<cmd>ToggleTerm direction=float<cr>', desc = 'Toggle Terminal' },
+    -- Opens in normal mode
+    { '<leader>t', '<cmd>ToggleTerm direction=float<cr>', desc = 'Toggle Terminal', mode = 'n' },
+    -- Closes in terminal mode
+    { '<leader>t', '<cmd>ToggleTerm<cr>', desc = 'Toggle Terminal', mode = 't' },
   },
   opts = {
-    -- Setting this to <leader>t allows it to work in terminal mode to close it
-    open_mapping = [[<leader>t]], 
+    -- REMOVED open_mapping so it doesn't hijack insert mode!
     direction = 'float',
     float_opts = {
       border = 'curved',

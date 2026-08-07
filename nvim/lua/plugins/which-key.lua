@@ -47,12 +47,16 @@ return {
       -- Document existing key chains
       spec = {
         { '<leader>s', group = '[S]earch' },
+        { "g", group = "[g]TeleScope" },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>=', group = 'Run Script[=]' },
 
         { '<leader>f', group = '[F]ile Actions' },
         { '<leader>x', group = 'ToDo Action[x]' },
+        { "[", group = "previous item Todo" },
+        { "]", group = "next item Todo" },
+        { "z", group = "folds" },
       },
     },
   },

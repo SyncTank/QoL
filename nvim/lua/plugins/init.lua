@@ -31,4 +31,6 @@ return {
       return '%2l:%-2v'
     end
   end,
+
+vim.keymap.set('n', '<leader>?', '<cmd>WhichKey<cr>', { desc = 'Show all keymaps' })
 }
